@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 130">
+  <defs>
+    <linearGradient id="chBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C08A50"/><stop offset="1" stop-color="#84522A"/>
+    </linearGradient>
+    <linearGradient id="chDrawer" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E7BA80"/><stop offset="1" stop-color="#C28C53"/>
+    </linearGradient>
+  </defs>
+  <!-- 柜脚 -->
+  <g fill="#4E2E16">
+    <rect x="14" y="118" width="13" height="12" rx="3"/>
+    <rect x="153" y="118" width="13" height="12" rx="3"/>
+  </g>
+  <!-- 实心柜体与加厚台面 -->
+  <rect x="8" y="10" width="164" height="112" rx="8" fill="url(#chBody)" stroke="#4E2E16" stroke-width="3"/>
+  <rect x="3" y="3" width="174" height="13" rx="5" fill="#B27C48" stroke="#4E2E16" stroke-width="2.5"/>
+  <!-- 三层大抽屉 -->
+  <g fill="url(#chDrawer)" stroke="#8A5730" stroke-width="2">
+    <rect x="16" y="22" width="148" height="30" rx="5"/>
+    <rect x="16" y="56" width="148" height="30" rx="5"/>
+    <rect x="16" y="90" width="148" height="30" rx="5"/>
+  </g>
+  <g fill="none" stroke="#F3D3A6" stroke-width="2" opacity=".75">
+    <path d="M22 27h136"/><path d="M22 61h136"/><path d="M22 95h136"/>
+  </g>
+  <!-- 铜拉手 -->
+  <g fill="#F0C45A" stroke="#A9741E" stroke-width="1.5">
+    <rect x="76" y="33" width="28" height="7" rx="3.5"/>
+    <rect x="76" y="67" width="28" height="7" rx="3.5"/>
+    <rect x="76" y="101" width="28" height="7" rx="3.5"/>
+  </g>
+</svg>

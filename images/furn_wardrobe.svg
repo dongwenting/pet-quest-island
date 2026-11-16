@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 215">
+  <defs>
+    <linearGradient id="wdBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#B27C48"/><stop offset="1" stop-color="#754724"/>
+    </linearGradient>
+    <linearGradient id="wdDoor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#D6A46A"/><stop offset="1" stop-color="#B37C45"/>
+    </linearGradient>
+  </defs>
+  <!-- 柜脚 -->
+  <g fill="#4E2E16">
+    <rect x="16" y="202" width="14" height="12" rx="3"/>
+    <rect x="120" y="202" width="14" height="12" rx="3"/>
+  </g>
+  <!-- 柜体与顶檐 -->
+  <rect x="10" y="16" width="130" height="190" rx="8" fill="url(#wdBody)" stroke="#4E2E16" stroke-width="3"/>
+  <rect x="4" y="7" width="142" height="15" rx="6" fill="#96612F" stroke="#4E2E16" stroke-width="2.5"/>
+  <rect x="12" y="192" width="126" height="13" rx="4" fill="#5E381C"/>
+  <!-- 双开门 -->
+  <rect x="18" y="27" width="54" height="164" rx="5" fill="url(#wdDoor)" stroke="#6B4122" stroke-width="2.5"/>
+  <rect x="78" y="27" width="54" height="164" rx="5" fill="url(#wdDoor)" stroke="#6B4122" stroke-width="2.5"/>
+  <!-- 门上实心嵌板 -->
+  <g fill="#E7BB82" stroke="#A9713F" stroke-width="2">
+    <rect x="25" y="35" width="40" height="66" rx="4"/>
+    <rect x="25" y="113" width="40" height="70" rx="4"/>
+    <rect x="85" y="35" width="40" height="66" rx="4"/>
+    <rect x="85" y="113" width="40" height="70" rx="4"/>
+  </g>
+  <g stroke="#C79458" stroke-width="1.5" fill="none" opacity=".8" stroke-linecap="round">
+    <path d="M32 96q13-6 26 0"/><path d="M32 175q13-6 26 0"/>
+    <path d="M92 96q13-6 26 0"/><path d="M92 175q13-6 26 0"/>
+  </g>
+  <!-- 铜把手 -->
+  <g fill="#F0C45A" stroke="#A9741E" stroke-width="1.5">
+    <circle cx="68" cy="108" r="5"/><circle cx="82" cy="108" r="5"/>
+  </g>
+  <path d="M20 22h110" stroke="#E0AE73" stroke-width="2" opacity=".6"/>
+</svg>

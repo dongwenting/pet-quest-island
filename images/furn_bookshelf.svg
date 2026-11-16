@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 230">
+  <defs>
+    <linearGradient id="bkWood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8A5530"/><stop offset="1" stop-color="#5C361D"/>
+    </linearGradient>
+    <linearGradient id="bkInner" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#B27A47"/><stop offset="1" stop-color="#96603A"/>
+    </linearGradient>
+  </defs>
+  <!-- 柜脚 -->
+  <g fill="#472815">
+    <rect x="18" y="214" width="11" height="14" rx="3"/>
+    <rect x="131" y="214" width="11" height="14" rx="3"/>
+  </g>
+  <!-- 柜体：整块实心木板 -->
+  <rect x="10" y="42" width="140" height="176" rx="9" fill="url(#bkWood)" stroke="#472815" stroke-width="3"/>
+  <rect x="5" y="36" width="150" height="14" rx="6" fill="#7B4A28" stroke="#472815" stroke-width="2.5"/>
+  <!-- 三层实心背板 -->
+  <g fill="url(#bkInner)">
+    <rect x="19" y="54" width="122" height="49" rx="2"/>
+    <rect x="19" y="108" width="122" height="49" rx="2"/>
+    <rect x="19" y="162" width="122" height="49" rx="2"/>
+  </g>
+  <!-- 第一层：横放书 + 竖放书 -->
+  <g stroke="#6B4A32" stroke-width="1.2">
+    <rect x="27" y="88" width="58" height="11" rx="3" fill="#A8C766"/>
+    <rect x="25" y="77" width="62" height="11" rx="3" fill="#B49BD8"/>
+    <rect x="92" y="62" width="11" height="37" rx="2" fill="#F2EAD3"/>
+    <rect x="104" y="62" width="11" height="37" rx="2" fill="#3E7EA6"/>
+    <rect x="116" y="62" width="11" height="37" rx="2" fill="#2F9188"/>
+    <rect x="128" y="62" width="11" height="37" rx="2" fill="#E45B4E"/>
+    <rect x="138" y="62" width="5" height="37" rx="2" fill="#F6EAD0"/>
+  </g>
+  <g fill="#FFF8E8" opacity=".9">
+    <rect x="30" y="91" width="4" height="5" rx="1"/>
+    <rect x="28" y="80" width="4" height="5" rx="1"/>
+    <rect x="94" y="70" width="7" height="5" rx="1"/>
+    <rect x="106" y="70" width="7" height="5" rx="1"/>
+    <rect x="118" y="70" width="7" height="5" rx="1"/>
+    <rect x="130" y="70" width="7" height="5" rx="1"/>
+  </g>
+  <!-- 第二层：竖放书 + 横放书 -->
+  <g stroke="#6B4A32" stroke-width="1.2">
+    <rect x="28" y="116" width="11" height="38" rx="2" fill="#E9B84B"/>
+    <rect x="40" y="116" width="11" height="38" rx="2" fill="#7FC4D8"/>
+    <rect x="52" y="116" width="11" height="38" rx="2" fill="#8DC26B" transform="rotate(13 57 135)"/>
+    <rect x="86" y="143" width="53" height="11" rx="3" fill="#EFC65A"/>
+    <rect x="88" y="132" width="49" height="11" rx="3" fill="#E9695C"/>
+    <rect x="86" y="121" width="53" height="11" rx="3" fill="#8DBE63"/>
+  </g>
+  <g fill="#FFF8E8" opacity=".9">
+    <rect x="30" y="124" width="7" height="5" rx="1"/>
+    <rect x="42" y="124" width="7" height="5" rx="1"/>
+    <rect x="89" y="146" width="4" height="5" rx="1"/>
+    <rect x="91" y="135" width="4" height="5" rx="1"/>
+    <rect x="89" y="124" width="4" height="5" rx="1"/>
+  </g>
+  <!-- 第三层：横放书 + 竖放书 -->
+  <g stroke="#6B4A32" stroke-width="1.2">
+    <rect x="26" y="197" width="56" height="11" rx="3" fill="#EFC65A"/>
+    <rect x="28" y="186" width="52" height="11" rx="3" fill="#A98BD0"/>
+    <rect x="32" y="175" width="44" height="11" rx="3" fill="#E89DB4"/>
+    <rect x="86" y="170" width="11" height="38" rx="2" fill="#E9DFC8"/>
+    <rect x="98" y="170" width="11" height="38" rx="2" fill="#6FAF66"/>
+    <rect x="110" y="170" width="11" height="38" rx="2" fill="#EFA84A"/>
+    <rect x="122" y="170" width="11" height="38" rx="2" fill="#E45E52"/>
+    <rect x="134" y="170" width="7" height="38" rx="2" fill="#EFC65A"/>
+  </g>
+  <g fill="#FFF8E8" opacity=".9">
+    <rect x="29" y="200" width="4" height="5" rx="1"/>
+    <rect x="88" y="178" width="7" height="5" rx="1"/>
+    <rect x="100" y="178" width="7" height="5" rx="1"/>
+    <rect x="112" y="178" width="7" height="5" rx="1"/>
+    <rect x="124" y="178" width="7" height="5" rx="1"/>
+  </g>
+  <!-- 实心隔板 -->
+  <g fill="#5C361D">
+    <rect x="14" y="103" width="132" height="7"/>
+    <rect x="14" y="157" width="132" height="7"/>
+    <rect x="14" y="211" width="132" height="7"/>
+  </g>
+  <!-- 顶部仙人掌：实心绿植 + 实心花盆 -->
+  <g fill="#4E9B52" stroke="#2F6B37" stroke-width="2">
+    <rect x="68" y="0" width="24" height="30" rx="12"/>
+    <rect x="53" y="9" width="15" height="17" rx="7"/>
+    <rect x="92" y="4" width="15" height="21" rx="7"/>
+  </g>
+  <g fill="#2F6B37" opacity=".55">
+    <circle cx="80" cy="9" r="1.6"/><circle cx="80" cy="17" r="1.6"/>
+    <circle cx="60" cy="17" r="1.4"/><circle cx="100" cy="13" r="1.4"/>
+  </g>
+  <path d="M62 24h36l-5 12H67z" fill="#E8A23A" stroke="#B5701E" stroke-width="2" stroke-linejoin="round"/>
+  <rect x="59" y="20" width="42" height="8" rx="3" fill="#F6BD55" stroke="#B5701E" stroke-width="2"/>
+</svg>

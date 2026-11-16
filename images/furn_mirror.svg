@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 220">
+  <defs>
+    <linearGradient id="mrFrame" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F6D49B"/><stop offset="1" stop-color="#BE8648"/>
+    </linearGradient>
+    <linearGradient id="mrGlass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#EAF6F7"/><stop offset=".55" stop-color="#CBE6EA"/><stop offset="1" stop-color="#A8CBD4"/>
+    </linearGradient>
+  </defs>
+  <!-- 支架 -->
+  <g fill="#A8763F" stroke="#855A2C" stroke-width="2">
+    <rect x="14" y="204" width="102" height="10" rx="5"/>
+    <path d="M20 204l10-22h10l-8 22z"/>
+    <path d="M110 204l-10-22H90l8 22z"/>
+  </g>
+  <!-- 外框 -->
+  <path d="M22 96C22 42 44 6 65 6s43 36 43 90v104H22z" fill="url(#mrFrame)" stroke="#9A6834" stroke-width="3.5"/>
+  <!-- 镜面 -->
+  <path d="M32 96C32 48 48 16 65 16s33 32 33 80v94H32z" fill="url(#mrGlass)" stroke="#8FB6BE" stroke-width="2.5"/>
+  <!-- 镜面反光 -->
+  <path d="M42 92C42 54 52 26 62 22q-14 18-14 72v94H42z" fill="#FFFFFF" opacity=".55"/>
+  <path d="M74 34q14 24 14 62" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" fill="none" opacity=".35"/>
+  <!-- 框上小雕花 -->
+  <circle cx="65" cy="14" r="6" fill="#FFF0C8" stroke="#B4834B" stroke-width="2"/>
+</svg>

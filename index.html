@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#58cc02">
+<title>萌宠闯关岛 · 快乐学习</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/room-theme.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- ============ 首页 / 关卡地图 ============ -->
+  <section class="screen screen-home active" id="screen-home">
+    <header class="topbar">
+      <button class="subject-btn" id="subjectBtn">
+        <span class="subject-flag" id="subjectFlag">语</span>
+        <span class="subject-name" id="subjectName">语文</span>
+        <svg viewBox="0 0 10 6" class="caret"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <button class="buddy-avatar" id="buddyAvatar" title="换个形象" aria-label="换个形象">
+        <img data-char="normal" src="images/char_tuantuan_normal.png" alt="学习伙伴">
+      </button>
+      <div class="topstats">
+        <div class="stat" id="coinStat"><img src="images/coin.png" alt="" class="stat-ico"><span id="coinNum">0</span></div>
+        <div class="stat" id="streakStat"><img src="images/flame.png" alt="" class="stat-ico"><span id="streakNum">0</span></div>
+      </div>
+    </header>
+
+    <div class="unit-banner" id="unitBanner">
+      <div class="unit-banner-txt">
+        <div class="unit-banner-sub" id="unitBannerSub">第一单元</div>
+        <div class="unit-banner-title" id="unitBannerTitle">自然之美</div>
+      </div>
+      <button class="unit-banner-btn" id="dexBtn2" title="花卡收藏">
+        <img src="images/card.png" alt="">
+      </button>
+    </div>
+
+    <div class="map-wrap" id="mapWrap">
+      <svg class="map-path" id="mapPath" preserveAspectRatio="none"></svg>
+      <div class="map-nodes" id="mapNodes"></div>
+      <div class="map-buddy" id="mapMascot">
+        <div class="mb-bubble" id="mbBubble">点绿色星星开始闯关吧！</div>
+        <div class="mb-figure"><img data-char="normal" data-stage="1" src="images/char_tuantuan_normal.png" alt="学习伙伴"></div>
+        <div class="mb-shadow"></div>
+        <button class="mb-change" id="buddyChange" type="button">换个形象</button>
+      </div>
+    </div>
+    <div class="map-bottom-space"></div>
+  </section>
+
+  <!-- ============ 答题 ============ -->
+  <section class="screen screen-quiz" id="screen-quiz">
+    <header class="quiz-top">
+      <button class="icon-btn" id="quizClose" aria-label="退出">
+        <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>
+      </button>
+      <div class="progress"><div class="progress-fill" id="quizProgress"></div></div>
+      <div class="combo" id="quizCombo"><img src="images/flame.png" alt=""><span>0</span></div>
+      <span class="quiz-count" id="quizCount">1/6</span>
+    </header>
+
+    <div class="quiz-body">
+      <div class="quiz-meta" id="quizMeta"></div>
+      <div class="quiz-ramp" id="quizRamp"></div>
+      <div class="quiz-mascot-row">
+        <img class="quiz-mascot" id="quizMascotImg" data-char="normal" src="images/char_tuantuan_normal.png" alt="学习伙伴">
+        <div class="quiz-bubble" id="quizStem"></div>
+      </div>
+      <div class="options" id="quizOptions"></div>
+    </div>
+
+    <footer class="quiz-foot">
+      <div class="feedback" id="quizFeedback">
+        <div class="feedback-head"><span id="feedbackTitle"></span></div>
+        <div class="feedback-body" id="feedbackText"></div>
+      </div>
+      <button class="btn btn-primary" id="quizAction" disabled>检查</button>
+    </footer>
+  </section>
+
+  <!-- ============ 结算 ============ -->
+  <section class="screen screen-result" id="screen-result">
+    <div class="result-inner">
+      <img class="result-mascot" id="resultMascot" data-char="happy" src="images/char_tuantuan_happy.png" alt="学习伙伴">
+      <div class="result-stars" id="resultStars"></div>
+      <h2 class="result-title" id="resultTitle">完成本关！</h2>
+      <p class="result-sub" id="resultSub"></p>
+      <div class="result-stats">
+        <div class="rs"><b id="rsAccuracy">0%</b><span>正确率</span></div>
+        <div class="rs"><b id="rsCoins">0</b><span>金币</span></div>
+        <div class="rs"><b id="rsCombo">0</b><span>最高连击</span></div>
+      </div>
+      <div class="result-cards hidden" id="resultCards"></div>
+      <div class="result-actions">
+        <button class="btn btn-ghost hidden" id="resultRetry">再试一次</button>
+        <button class="btn btn-primary" id="resultContinue">返回地图</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 打卡 / 转盘 ============ -->
+  <section class="screen screen-daily" id="screen-daily">
+    <header class="page-head">
+      <img class="page-buddy" data-char="normal" src="images/char_tuantuan_normal.png" alt="">
+      <h1>每日打卡</h1>
+      <p class="page-sub" id="dailyDate"></p>
+    </header>
+
+    <div class="card streak-card">
+      <div class="streak-top">
+        <img src="images/flame.png" class="streak-flame" alt="">
+        <div>
+          <div class="streak-num"><b id="streakBig">0</b> 天</div>
+          <div class="streak-hint" id="streakHint">连续打卡，转盘天天有惊喜</div>
+        </div>
+      </div>
+      <div class="week-row" id="weekRow"></div>
+    </div>
+
+    <div class="card wheel-card">
+      <div class="wheel-stage" id="wheelStage">
+        <div class="wheel-rim">
+          <svg class="wheel-arcs" viewBox="0 0 300 300" aria-hidden="true">
+            <defs>
+              <path id="wheelArcTop" d="M 38.9 80.6 A 131 131 0 0 1 261.1 80.6"/>
+              <path id="wheelArcBottom" d="M 38.9 219.4 A 131 131 0 0 0 261.1 219.4"/>
+            </defs>
+            <text class="wheel-arc-text"><textPath href="#wheelArcTop" startOffset="50%" text-anchor="middle">幸 运 大 转 盘 · 惊 喜 天 天 送</textPath></text>
+            <text class="wheel-arc-text wheel-arc-sm"><textPath href="#wheelArcBottom" startOffset="50%" text-anchor="middle">好 运 连 连 · 学 业 进 步</textPath></text>
+          </svg>
+          <div class="wheel-bulbs" id="wheelBulbs"></div>
+        </div>
+        <div class="wheel" id="wheel">
+          <div class="wheel-segs" id="wheelSegs"></div>
+        </div>
+        <div class="wheel-pointer"></div>
+        <div class="wheel-hub" id="wheelHub">抽奖</div>
+      </div>
+      <button class="btn btn-primary" id="spinBtn">转动幸运转盘</button>
+      <p class="wheel-tip" id="wheelTip">每天一次 · 连续 7 天再得 25 金币</p>
+    </div>
+
+    <h3 class="sec-title">每日任务</h3>
+    <div id="taskList" class="task-list"></div>
+  </section>
+
+  <!-- ============ 宠物 / 商店 ============ -->
+  <section class="screen screen-pet" id="screen-pet">
+    <header class="page-head">
+      <img class="page-buddy" data-char="normal" src="images/char_tuantuan_normal.png" alt="">
+      <h1 id="petTitle">萌宠闯关岛</h1>
+      <p class="page-sub" id="petSub">喂饱它、陪它玩，一起长大</p>
+    </header>
+
+    <div class="card pet-card">
+      <div class="scene-bar">
+        <span class="sb-label">🏠 我的小家</span>
+        <div class="sb-chips" id="sceneChips"></div>
+      </div>
+      <div class="scene-desc" id="sceneDesc"></div>
+      <div class="theme-bar">
+        <span class="tb-now" id="themeNow">🕒 正在识别时间…</span>
+        <button class="tb-toggle" id="themeToggle" type="button" aria-expanded="false">切换氛围 ›</button>
+      </div>
+      <div class="theme-panel" id="themePanel" hidden>
+        <div class="tp-row"><span class="tp-label">时段</span><div class="tp-chips" id="todChips"></div></div>
+        <div class="tp-row"><span class="tp-label">季节</span><div class="tp-chips" id="seasonChips"></div></div>
+        <p class="tp-hint">默认「自动」按设备时间与月份变换：清晨厨房有晨光、午后客厅洒暖阳、夜晚卧室亮起星光；四季还有花瓣、光尘、落叶与雪花。</p>
+      </div>
+      <div class="pet-stage" id="petStage">
+        <div class="ps-wall">
+          <div class="ps-window"></div>
+          <div class="ps-frame"></div>
+        </div>
+        <div class="ps-floor"></div>
+        <!-- 房间氛围：压在背景 SVG 之上、家具与宠物之下 -->
+        <div class="pa pa-back" id="petAtmos" aria-hidden="true">
+          <div class="pa-tint"></div>
+          <div class="pa-season"></div>
+          <div class="pa-sky"></div>
+          <div class="pa-daylight"></div>
+          <div class="pa-spot"></div>
+          <div class="pa-glow"></div>
+          <div class="pa-beam pa-beam-1"></div>
+          <div class="pa-beam pa-beam-2"></div>
+          <div class="pa-stars" id="paStars"></div>
+          <div class="pa-motes" id="paMotes"></div>
+        </div>
+        <div class="ps-room" id="petRoom"></div>
+        <div class="pet-fx" id="petFx"></div>
+        <div class="pet-speech" id="petSpeech"><span>今天也要加油哦～</span></div>
+        <div class="pet-figure" id="petFigure">
+          <div class="pet-wear back" id="petWearBack"></div>
+          <img id="petImg" data-char="normal" data-stage="1" src="images/char_tuantuan_normal.png" alt="学习伙伴">
+          <div class="pet-wear front" id="petWearFront"></div>
+        </div>
+        <!-- 极淡前景：窗帘轻摆 / 厨房蒸汽 / 扫过的体积光 -->
+        <div class="pa pa-front" id="petAtmosFront" aria-hidden="true">
+          <div class="pa-curtain pa-curtain-l"></div>
+          <div class="pa-curtain pa-curtain-r"></div>
+          <div class="pa-steam">
+            <i style="--sx:67%;--sd:0s"></i>
+            <i style="--sx:72%;--sd:-2.1s"></i>
+            <i style="--sx:77%;--sd:-4.2s"></i>
+          </div>
+          <div class="pa-frontlight"></div>
+        </div>
+        <button class="ps-tap" id="petTapHint" type="button">摸摸它</button>
+        <div class="ps-stage-tag" id="petStageTag">幼芽期</div>
+      </div>
+
+      <div class="pet-nameplate">
+        <div class="pn-name" id="petName">萌宠 · Lv.1</div>
+        <div class="pn-tags">
+          <span class="pn-tag" id="petMoodTag">心情很好</span>
+          <span class="pn-tag ghost" id="petHungerTag">吃得饱饱</span>
+        </div>
+        <button class="pn-change" id="petChangeBtn" type="button">换个形象 ›</button>
+      </div>
+
+      <div class="pet-stats">
+        <div class="pstat">
+          <div class="pstat-head"><span class="pstat-ico">🍗</span><span class="pstat-name">饱食度</span><b id="hungerVal">80</b></div>
+          <div class="pbar pbar-hunger"><i id="hungerBar" style="width:80%"></i></div>
+        </div>
+        <div class="pstat">
+          <div class="pstat-head"><span class="pstat-ico">💗</span><span class="pstat-name">心情</span><b id="moodVal">80</b></div>
+          <div class="pbar pbar-mood"><i id="moodBar" style="width:80%"></i></div>
+        </div>
+      </div>
+
+      <div class="pet-food">
+        <div class="pf-head"><span>背包里的食物</span><em id="foodHint">选一种，再点「喂食」</em></div>
+        <div class="pf-fav" id="favHint"></div>
+        <div class="pf-row" id="foodRow"></div>
+      </div>
+
+      <div class="pet-actions">
+        <button class="pact pact-feed" id="feedBtn" type="button"><span class="pact-ico">🍽️</span>喂食</button>
+        <button class="pact pact-play" id="petPlayBtn" type="button"><span class="pact-ico">🎾</span>陪它玩</button>
+        <button class="pact pact-pat" id="petPatBtn" type="button"><span class="pact-ico">🤲</span>抚摸</button>
+      </div>
+
+      <div class="evo">
+        <div class="evo-top"><span>进化进度</span><em id="evoHint"></em></div>
+        <div class="evo-bar"><i id="evoBar"></i></div>
+        <div class="evo-marks"><span>7天 嫩芽</span><span>30天 星芽</span><span>100天 传说</span></div>
+      </div>
+    </div>
+
+    <h3 class="sec-title">商店</h3>
+    <div class="tabs" id="shopTabs">
+      <button class="tab active" data-tab="food">食物</button>
+      <button class="tab" data-tab="wear">服饰</button>
+      <button class="tab" data-tab="furniture">家具</button>
+    </div>
+    <div class="shop-grid" id="shopGrid"></div>
+  </section>
+
+  <!-- ============ 花卡 ============ -->
+  <section class="screen screen-dex" id="screen-dex">
+    <header class="page-head">
+      <img class="page-buddy" data-char="normal" src="images/char_tuantuan_normal.png" alt="">
+      <h1>群芳谱</h1>
+      <p class="page-sub" id="dexSub">第 1 辑 · 108 张卡通花卡</p>
+    </header>
+    <div class="dex-progress"><div class="bar"><i id="dexBar" style="width:0%"></i></div><span id="dexCount">0 / 108</span></div>
+    <div class="dex-tools">
+      <div class="dex-filters" id="dexFilters">
+        <button class="df active" data-f="all" type="button">全部</button>
+        <button class="df" data-f="owned" type="button">已收集</button>
+        <button class="df" data-f="missing" type="button">未收集</button>
+        <button class="df" data-f="rare" type="button">珍稀·传说</button>
+      </div>
+      <input class="dex-search" id="dexSearch" type="search" placeholder="搜花名 / 编号">
+    </div>
+    <p class="dex-hint" id="dexHint"></p>
+    <div class="dex-rules" id="dexRules"></div>
+    <div class="flower-grid" id="dexGrid"></div>
+    <div class="summon-box" id="summonBox"></div>
+    <div class="dex-replay" id="dexReplay"></div>
+  </section>
+
+  <!-- ============ 我的 ============ -->
+  <section class="screen screen-me" id="screen-me">
+    <header class="page-head">
+      <img class="page-buddy" data-char="normal" src="images/char_tuantuan_normal.png" alt="">
+      <h1>我的</h1>
+      <p class="page-sub">学习档案与数据</p>
+    </header>
+    <div class="card me-stats">
+      <div><b id="meCoins">0</b><span>金币</span></div>
+      <div><b id="meQuestions">0</b><span>做过的题</span></div>
+      <div><b id="meAccuracy">0%</b><span>正确率</span></div>
+      <div><b id="meDays">0</b><span>学习天数</span></div>
+    </div>
+
+    <div class="card cloud-card" id="cloudCard">
+      <div class="cloud-row">
+        <div class="cloud-info">
+          <div class="cloud-title" id="cloudTitle">云存档</div>
+          <div class="cloud-sub" id="cloudSub">登录后可跨设备同步进度</div>
+        </div>
+        <button class="btn btn-primary cloud-btn" id="cloudLoginBtn" type="button">登录</button>
+        <button class="btn btn-ghost cloud-btn hidden" id="cloudLogoutBtn" type="button">退出</button>
+      </div>
+    </div>
+
+    <h3 class="sec-title">错题本 <span class="sec-count" id="wrongCount"></span>
+      <button class="sec-link" id="wrongRedoAll" type="button">全部重做</button>
+    </h3>
+    <div id="wrongList" class="wrong-list"></div>
+
+    <h3 class="sec-title">设置</h3>
+    <div class="card list-card">
+      <button class="row row-btn" id="charBtn">
+        <span class="char-row"><img id="charPreview" data-char="normal" src="images/char_tuantuan_normal.png" alt="">我的学习伙伴</span>
+        <span class="row-arrow"><b id="charName">团团</b> ›</span>
+      </button>
+      <label class="row"><span>音效</span><input type="checkbox" id="soundToggle" checked class="switch"></label>
+      <label class="row"><span>语音鼓励<small>全站统一可爱女童声 · 答题 / 萌宠说话</small></span><input type="checkbox" id="voiceToggle" checked class="switch"></label>
+      <label class="row"><span>动画效果</span><input type="checkbox" id="animToggle" checked class="switch"></label>
+    </div>
+
+    <h3 class="sec-title">数据</h3>
+    <div class="card list-card">
+      <button class="row row-btn" id="exportBtn"><span>导出存档（JSON）</span><span class="row-arrow">›</span></button>
+      <button class="row row-btn" id="importBtn"><span>导入存档</span><span class="row-arrow">›</span></button>
+      <button class="row row-btn danger" id="resetBtn"><span>清空进度</span><span class="row-arrow">›</span></button>
+    </div>
+    <p class="foot-note">登录后可跨设备同步进度 · 未登录时数据保存在本机 · 也可用导出/导入迁移</p>
+    <input type="file" id="importFile" accept="application/json,.json" hidden>
+  </section>
+
+  <!-- ============ 底部导航 ============ -->
+  <nav class="tabbar" id="tabbar">
+    <button class="tabbar-btn active" data-go="home">
+      <svg viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z" /></svg>
+      <span>学习</span>
+    </button>
+    <button class="tabbar-btn" data-go="daily">
+      <svg viewBox="0 0 24 24"><path d="M7 3v3M17 3v3M4 8h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+      <span>打卡</span>
+    </button>
+    <button class="tabbar-btn" data-go="pet">
+      <svg viewBox="0 0 24 24"><path d="M12 21c4 0 7-2.7 7-6.2 0-2.4-1.6-4.6-3.2-5.9C14.4 7.7 13.5 6 13.6 4c-2.4 1-3.7 2.7-4 4.7-1-.5-1.9-.7-2.6-.7C5.3 8 4 10.2 4 12.8 4 17.3 7.5 21 12 21z"/></svg>
+      <span>宠物</span>
+    </button>
+    <button class="tabbar-btn" data-go="dex">
+      <svg viewBox="0 0 24 24"><path d="M5 4h6v16H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zM13 4h6a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-6z"/></svg>
+      <span>集卡</span>
+    </button>
+    <button class="tabbar-btn" data-go="me">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg>
+      <span>我的</span>
+    </button>
+  </nav>
+
+  <!-- ============ 学科抽屉 ============ -->
+  <div class="drawer-mask" id="drawerMask"></div>
+  <aside class="drawer" id="drawer">
+    <div class="drawer-handle"></div>
+    <h3>选择学科</h3>
+    <div class="subject-grid" id="subjectGrid"></div>
+    <h3 class="drawer-h">选择教材 / 阶段</h3>
+    <div class="grade-row" id="gradeRow"></div>
+  </aside>
+
+  <!-- ============ 开宝箱特效 ============ -->
+  <div class="chest-fx" id="chestFx">
+    <div class="cf-confetti" id="cfConfetti"></div>
+    <div class="cf-panel">
+      <div class="cf-kicker" id="cfKicker">第一单元 · 宝箱</div>
+      <h2 class="cf-head" id="cfHead">宝箱开启中…</h2>
+      <div class="cf-stage">
+        <div class="cf-beam"></div>
+        <div class="cf-burst"></div>
+        <div class="cf-glow"></div>
+        <div class="cf-chest-holder" id="cfChestSvg"></div>
+        <div class="cf-coins" id="cfCoins"></div>
+        <div class="cf-cardfly" id="cfCardFly"></div>
+        <div class="cf-glints" id="cfGlints"></div>
+        <i class="cf-spark s1"></i><i class="cf-spark s2"></i><i class="cf-spark s3"></i>
+        <i class="cf-spark s4"></i><i class="cf-spark s5"></i><i class="cf-spark s6"></i>
+      </div>
+      <div class="cf-reward" id="cfReward">
+        <div class="cf-coin-line"><img src="images/coin.png" alt=""><b id="cfCoinNum">0</b><span>金币</span></div>
+        <div class="cf-reward-name" id="cfRewardName"></div>
+        <div class="cf-reward-sub" id="cfRewardSub"></div>
+      </div>
+      <button class="btn btn-primary cf-btn" id="cfClose">收下，继续闯关</button>
+    </div>
+  </div>
+
+  <!-- ============ 翻卡浮层 ============ -->
+  <div class="card-fx" id="cardFx">
+    <div class="cdf-confetti" id="cdfConfetti"></div>
+    <div class="cdf-panel">
+      <div class="cdf-kicker" id="cdfKicker">神秘宝箱</div>
+      <h2 class="cdf-head" id="cdfHead">抽到花卡！</h2>
+      <div class="cdf-cards" id="cdfCards"></div>
+      <p class="cdf-hint" id="cdfHint">点卡片可提前翻开 · 发过的卡不会再出现</p>
+      <button class="btn btn-primary" id="cdfClose" type="button">收下花卡</button>
+    </div>
+  </div>
+
+  <!-- ============ 花仙子变身 ============ -->
+  <div class="fairy-fx" id="fairyFx">
+    <div class="ff-stars" id="ffStars"></div>
+    <div class="ff-rays"></div>
+    <div class="ff-core"></div>
+    <div class="ff-rings"><i></i><i></i><i></i></div>
+    <div class="ff-beam"></div>
+    <div class="ff-bloom" id="ffBloom"></div>
+    <div class="ff-ribbons"><i></i><i></i></div>
+    <div class="ff-petals" id="ffPetals"></div>
+    <div class="ff-fall" id="ffFall"></div>
+    <div class="ff-flash"></div>
+    <button class="ff-skip" id="ffSkip" type="button">跳过</button>
+    <div class="ff-panel">
+      <div class="ff-kicker" id="ffKicker">第 1 辑 · 108 张全部集齐</div>
+      <div class="ff-hero">
+        <div class="ff-hero-in"><img src="images/flower_fairy.png" alt="花仙子"></div>
+        <img class="ff-ghost" src="images/flower_fairy.png" alt="">
+      </div>
+      <h2 class="ff-head">花仙子降临</h2>
+      <p class="ff-body" id="ffBody"></p>
+      <div class="ff-rewards" id="ffRewards">
+        <span>🪙 <b id="ffCoins">500</b> 金币</span>
+        <span>👗 限定伙伴</span>
+        <span>📖 下一辑</span>
+      </div>
+      <div class="ff-btns">
+        <button class="btn btn-primary" id="ffNext" type="button">开启第二辑</button>
+        <button class="btn btn-ghost" id="ffReplay" type="button">再看一次</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 弹窗 ============ -->
+  <div class="modal-mask" id="modalMask">
+    <div class="modal" id="modal">
+      <div id="modalBody"></div>
+      <div class="modal-btns" id="modalBtns">
+        <button class="btn btn-primary" id="modalClose">知道啦</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+</div>
+
+<!-- 题库：一个学科一个目录、一本教材一个文件。
+     新增题库 = 在 data/banks/<学科>/ 下放文件 + 在这里加一行 script
+     注：idiom/base.js 是挂在语文学科下的「成语通关」子入口（subjectKey=chinese） -->
+<script src="data/subjects.js"></script>
+<script src="js/bank.js"></script>
+<script src="data/banks/chinese/g4-a.js"></script>
+<script src="data/banks/chinese/g4-b.js"></script>
+<script src="data/banks/chinese/g5-a.js"></script>
+<script src="data/banks/chinese/g5-b.js"></script>
+<script src="data/banks/chinese/g6-a.js"></script>
+<script src="data/banks/chinese/g6-b.js"></script>
+<script src="data/banks/idiom/base.js"></script>
+<script src="data/flowers.js"></script>
+<script src="js/store.js"></script>
+<!-- 云服务：WorkBuddy 账号登录 + 整档云存档（SDK 本地化，无 CDN 依赖） -->
+<script src="js/workbuddy-cloud-sdk.global.js"></script>
+<script>
+  window.__CLOUD_CFG__ = {
+    endpoint: "https://cute-pet-island.app.workbuddy.host",
+    oauthRelayBaseUrl: "https://www.workbuddy.cn/v2/as/genie-baas/oauth",
+    publishableKey: "wbpk_VfMWOPi2y4bKKU0Q3oysyQ_TXHlNpCK741QmtZcNaPD9JixAPBtS1a6"
+  };
+</script>
+<script src="js/cloud.js"></script>
+<script src="js/characters.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/flowerart.js"></script>
+<script src="js/cards.js"></script>
+<script src="js/chestfx.js"></script>
+<script src="js/fairyfx.js"></script>
+<script src="js/quiz.js"></script>
+<script src="js/home.js"></script>
+<script src="js/daily.js"></script>
+<script src="js/wearart.js"></script>
+<script src="js/pet.js"></script>
+<script src="js/roomtheme.js"></script>
+<script src="js/dex.js"></script>
+<script src="js/me.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

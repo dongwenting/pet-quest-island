@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 180">
+  <defs>
+    <linearGradient id="sfYellow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFE565"/><stop offset="1" stop-color="#EFB312"/>
+    </linearGradient>
+    <linearGradient id="sfGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6CC24C"/><stop offset="1" stop-color="#2E7D32"/>
+    </linearGradient>
+  </defs>
+  <!-- 四条实木腿 -->
+  <g fill="#D79A2C" stroke="#A56E18" stroke-width="2">
+    <path d="M42 142h15l-3 34h-9z"/>
+    <path d="M143 142h15l-3 34h-9z"/>
+    <path d="M64 148h13l-2 26h-9z"/>
+    <path d="M123 148h13l-2 26h-9z"/>
+  </g>
+  <!-- 桶形大靠背：内外两层都是实心色块 -->
+  <path d="M18 122C8 58 32 8 100 8s82 50 82 114z" fill="url(#sfYellow)" stroke="#D99B0C" stroke-width="3"/>
+  <path d="M40 112C34 62 56 28 100 28s66 34 60 84z" fill="#E3A50C" opacity=".62"/>
+  <path d="M26 96C20 54 42 18 100 18" fill="none" stroke="#FFF3B0" stroke-width="5" stroke-linecap="round" opacity=".75"/>
+  <!-- 绿色抱枕（实心叶形） -->
+  <path d="M114 20c20 3 40 27 38 54-2 23-18 36-34 31-16-5-21-30-17-52 3-19 6-31 13-33z"
+        fill="url(#sfGreen)" stroke="#2C6B2B" stroke-width="2.5"/>
+  <g stroke="#2C6B2B" stroke-width="1.4" opacity=".35" fill="none" stroke-linecap="round">
+    <path d="M116 30c12 14 18 34 17 56"/><path d="M126 26c11 16 17 36 16 58"/>
+    <path d="M136 30c9 16 13 34 12 50"/>
+  </g>
+  <path d="M112 26c8 2 15 9 20 18-10-4-17-10-20-18z" fill="#A5DC7C" opacity=".55"/>
+  <!-- 座体：厚实的圆柱底座 -->
+  <path d="M20 110c0-14 20-24 80-24s80 10 80 24v30c0 16-22 26-80 26s-80-10-80-26z"
+        fill="url(#sfYellow)" stroke="#D99B0C" stroke-width="3"/>
+  <path d="M20 132c0 16 22 26 80 26s80-10 80-26v8c0 16-22 26-80 26s-80-10-80-26z" fill="#DEA00B" opacity=".65"/>
+  <!-- 圆形坐垫 -->
+  <ellipse cx="100" cy="106" rx="80" ry="33" fill="#FFDE4A" stroke="#DFA40B" stroke-width="2.5"/>
+  <path d="M22 110c6 16 36 26 78 26s72-10 78-26" fill="none" stroke="#FFE982" stroke-width="4" opacity=".8"/>
+  <!-- 前方延伸的软踏 -->
+  <rect x="54" y="140" width="92" height="27" rx="13" fill="#FFD83C" stroke="#D99B0C" stroke-width="2.5"/>
+  <path d="M62 146h76" stroke="#FFE982" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+</svg>

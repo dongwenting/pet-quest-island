@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 110">
+  <defs>
+    <linearGradient id="ctTop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F6CE92"/><stop offset="1" stop-color="#D29A58"/>
+    </linearGradient>
+    <linearGradient id="ctShelf" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E3B479"/><stop offset="1" stop-color="#B8803F"/>
+    </linearGradient>
+  </defs>
+  <!-- 下层搁板 -->
+  <rect x="26" y="70" width="138" height="12" rx="5" fill="url(#ctShelf)" stroke="#9B6533" stroke-width="2.5"/>
+  <!-- 四条腿 -->
+  <g fill="#B07A3F" stroke="#8B5B2D" stroke-width="2">
+    <rect x="24" y="38" width="13" height="50" rx="4"/>
+    <rect x="153" y="38" width="13" height="50" rx="4"/>
+    <rect x="36" y="82" width="12" height="24" rx="4"/>
+    <rect x="142" y="82" width="12" height="24" rx="4"/>
+  </g>
+  <!-- 桌面 -->
+  <ellipse cx="95" cy="40" rx="90" ry="20" fill="url(#ctTop)" stroke="#A9713C" stroke-width="3"/>
+  <ellipse cx="95" cy="36" rx="90" ry="20" fill="#F9D9A8" stroke="#A9713C" stroke-width="3"/>
+  <ellipse cx="95" cy="36" rx="72" ry="14" fill="#FBE7C6" opacity=".55"/>
+  <!-- 桌上书本与茶杯 -->
+  <g>
+    <rect x="52" y="24" width="34" height="8" rx="2" fill="#6FAF9B" stroke="#478B78" stroke-width="2"/>
+    <rect x="56" y="18" width="30" height="8" rx="2" fill="#F58B8B" stroke="#D36A6A" stroke-width="2"/>
+    <path d="M112 20h24l-3 15h-18z" fill="#FFFFFF" stroke="#C6B79C" stroke-width="2.5"/>
+    <path d="M136 23q9 2 6 8t-8 0" fill="none" stroke="#C6B79C" stroke-width="3"/>
+    <ellipse cx="124" cy="20" rx="12" ry="4" fill="#C78B56"/>
+  </g>
+</svg>

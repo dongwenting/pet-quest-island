@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 230">
+  <defs>
+    <linearGradient id="frBody" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFFFFF"/><stop offset=".72" stop-color="#F1F6F4"/><stop offset="1" stop-color="#D5E2DD"/>
+    </linearGradient>
+    <linearGradient id="frDoor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#EAF5F0"/><stop offset="1" stop-color="#C8DED5"/>
+    </linearGradient>
+  </defs>
+  <!-- 柜脚 -->
+  <g fill="#8A9C95"><rect x="18" y="216" width="16" height="12" rx="4"/><rect x="116" y="216" width="16" height="12" rx="4"/></g>
+  <!-- 机身 -->
+  <rect x="10" y="8" width="130" height="210" rx="14" fill="url(#frBody)" stroke="#9DB5AC" stroke-width="3"/>
+  <!-- 上冷冻门 -->
+  <rect x="18" y="16" width="114" height="62" rx="9" fill="url(#frDoor)" stroke="#9DB5AC" stroke-width="2.5"/>
+  <!-- 下冷藏门 -->
+  <rect x="18" y="84" width="114" height="126" rx="9" fill="url(#frDoor)" stroke="#9DB5AC" stroke-width="2.5"/>
+  <path d="M18 80h114" stroke="#9DB5AC" stroke-width="3"/>
+  <!-- 门把手 -->
+  <g fill="#7C9A8F" stroke="#5E7A70" stroke-width="2">
+    <rect x="108" y="30" width="10" height="34" rx="5"/>
+    <rect x="108" y="100" width="10" height="50" rx="5"/>
+  </g>
+  <!-- 门上贴纸与磁贴 -->
+  <rect x="34" y="30" width="34" height="26" rx="4" fill="#FFE9AE" stroke="#E8C97B" stroke-width="2"/>
+  <circle cx="46" cy="126" r="9" fill="#F58B8B" stroke="#D96B6B" stroke-width="2"/>
+  <circle cx="66" cy="140" r="7" fill="#8FC9E9" stroke="#6EA9CD" stroke-width="2"/>
+  <path d="M34 168h48" stroke="#B7CEC5" stroke-width="3" stroke-linecap="round"/>
+  <!-- 高光 -->
+  <path d="M24 20v196" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity=".7"/>
+</svg>

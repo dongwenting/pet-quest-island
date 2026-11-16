@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 200">
+  <defs>
+    <linearGradient id="pnWood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F2C48C"/><stop offset="1" stop-color="#C68A4D"/>
+    </linearGradient>
+    <linearGradient id="pnDoor" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FBE3BD"/><stop offset="1" stop-color="#E2B87E"/>
+    </linearGradient>
+  </defs>
+  <g fill="#8A5B32"><rect x="14" y="186" width="15" height="12" rx="3"/><rect x="141" y="186" width="15" height="12" rx="3"/></g>
+  <rect x="6" y="8" width="158" height="180" rx="8" fill="url(#pnWood)" stroke="#9C6734" stroke-width="3"/>
+  <!-- 开放格 -->
+  <rect x="16" y="18" width="138" height="62" rx="5" fill="#FFF0D7" stroke="#B98850" stroke-width="2.5"/>
+  <path d="M85 18v62" stroke="#B98850" stroke-width="2.5"/>
+  <!-- 格子里的餐具（实心） -->
+  <g>
+    <ellipse cx="36" cy="66" rx="17" ry="6" fill="#FFFFFF" stroke="#CDBB9C" stroke-width="2"/>
+    <ellipse cx="36" cy="60" rx="14" ry="5" fill="#EAF3F0" stroke="#CDBB9C" stroke-width="2"/>
+    <ellipse cx="67" cy="66" rx="17" ry="6" fill="#FFFFFF" stroke="#CDBB9C" stroke-width="2"/>
+    <ellipse cx="67" cy="60" rx="14" ry="5" fill="#EAF3F0" stroke="#CDBB9C" stroke-width="2"/>
+    <path d="M106 34h24l-3 32h-18z" fill="#8FC9E9" stroke="#5D9FC3" stroke-width="2.5"/>
+    <path d="M118 34q-10-16-3-22M118 34q10-14 5-22" stroke="#6DB36C" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <circle cx="114" cy="13" r="6" fill="#F58BA8"/>
+    <circle cx="126" cy="15" r="5" fill="#FFD36B"/>
+  </g>
+  <!-- 台面 -->
+  <rect x="0" y="78" width="170" height="14" rx="5" fill="#F8E4C2" stroke="#C9A373" stroke-width="2.5"/>
+  <!-- 下柜双门 -->
+  <rect x="8" y="94" width="154" height="94" rx="6" fill="url(#pnWood)" stroke="#A46E39" stroke-width="3"/>
+  <rect x="16" y="102" width="66" height="78" rx="5" fill="url(#pnDoor)" stroke="#B4834B" stroke-width="2.5"/>
+  <rect x="88" y="102" width="66" height="78" rx="5" fill="url(#pnDoor)" stroke="#B4834B" stroke-width="2.5"/>
+  <g fill="#9A6A3A" stroke="#7D5028" stroke-width="2">
+    <rect x="70" y="134" width="7" height="20" rx="3"/>
+    <rect x="93" y="134" width="7" height="20" rx="3"/>
+  </g>
+</svg>

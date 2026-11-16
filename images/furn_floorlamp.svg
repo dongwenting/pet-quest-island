@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 230">
+  <defs>
+    <linearGradient id="lpShade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#DFA64B"/><stop offset=".45" stop-color="#FFE7A9"/><stop offset="1" stop-color="#C98B34"/>
+    </linearGradient>
+    <linearGradient id="lpPole" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#A87F52"/><stop offset=".5" stop-color="#D4AC72"/><stop offset="1" stop-color="#6E4B2A"/>
+    </linearGradient>
+  </defs>
+  <!-- 柔光：实心淡黄，不镂空 -->
+  <circle cx="60" cy="98" r="50" fill="#FFE7A0" opacity=".3"/>
+  <!-- 布艺灯罩：整块实心梯形 -->
+  <path d="M30 30h60l18 74H12z" fill="url(#lpShade)" stroke="#B77B28" stroke-width="3" stroke-linejoin="round"/>
+  <g fill="#C98B34" opacity=".38">
+    <rect x="42" y="36" width="4" height="64" rx="2"/>
+    <rect x="58" y="36" width="4" height="64" rx="2"/>
+    <rect x="74" y="36" width="4" height="64" rx="2"/>
+  </g>
+  <path d="M33 34h54l2 8H31z" fill="#FFF2C8" opacity=".85"/>
+  <path d="M12 102h96v10H12z" fill="#C98B34" stroke="#A96E20" stroke-width="2"/>
+  <path d="M12 102h96" stroke="#FFE7A9" stroke-width="3" opacity=".8"/>
+  <!-- 金属立杆 -->
+  <rect x="55" y="112" width="10" height="94" rx="4" fill="url(#lpPole)" stroke="#6E4B2A" stroke-width="2"/>
+  <circle cx="60" cy="152" r="9" fill="#D4AC72" stroke="#8A6134" stroke-width="2"/>
+  <circle cx="60" cy="152" r="3.5" fill="#8A6134"/>
+  <!-- 厚重底座 -->
+  <path d="M18 204c0-12 84-12 84 0v8c0 12-84 12-84 0z" fill="#7A5430" stroke="#4E331C" stroke-width="2.5"/>
+  <ellipse cx="60" cy="204" rx="42" ry="11" fill="#9A7043" stroke="#4E331C" stroke-width="2.5"/>
+  <ellipse cx="60" cy="203" rx="15" ry="5" fill="#B98B55"/>
+</svg>

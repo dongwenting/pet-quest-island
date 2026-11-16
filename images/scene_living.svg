@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 248" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="lWall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FDF6EA"/><stop offset=".55" stop-color="#F7ECDF"/><stop offset="1" stop-color="#EEDCC4"/>
+    </linearGradient>
+    <radialGradient id="lSun" cx="82%" cy="14%" r="78%">
+      <stop offset="0" stop-color="#FFEEBE" stop-opacity=".7"/>
+      <stop offset=".42" stop-color="#FFEEBE" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#FFEEBE" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="lVign" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8A7050" stop-opacity=".14"/>
+      <stop offset=".18" stop-color="#8A7050" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="lPanel" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#E7D2B5"/><stop offset=".12" stop-color="#FBF0DF"/>
+      <stop offset=".5" stop-color="#F5E6CE"/><stop offset=".88" stop-color="#FBF0DF"/>
+      <stop offset="1" stop-color="#E3CDB0"/>
+    </linearGradient>
+    <linearGradient id="lFloor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E7C79B"/><stop offset=".45" stop-color="#D9B184"/><stop offset="1" stop-color="#C39A6C"/>
+    </linearGradient>
+    <linearGradient id="lFloorShadow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7A5636" stop-opacity=".32"/><stop offset="1" stop-color="#7A5636" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="lBase" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F6E2C3"/><stop offset=".5" stop-color="#D4AC7C"/><stop offset="1" stop-color="#AE824F"/>
+    </linearGradient>
+    <linearGradient id="lSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#A9DDF5"/><stop offset=".55" stop-color="#CFEDF7"/><stop offset="1" stop-color="#FDEFC8"/>
+    </linearGradient>
+    <linearGradient id="lFrame" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FBEACB"/><stop offset=".5" stop-color="#DDBB8E"/><stop offset="1" stop-color="#B58D5F"/>
+    </linearGradient>
+    <linearGradient id="lCurtain" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#E9AE88"/><stop offset=".28" stop-color="#F8D7B7"/>
+      <stop offset=".62" stop-color="#F3C4A0"/><stop offset="1" stop-color="#D89B76"/>
+    </linearGradient>
+    <radialGradient id="lGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#FFE1A0" stop-opacity=".85"/>
+      <stop offset="1" stop-color="#FFE1A0" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="lBlur" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="6"/></filter>
+    <filter id="lSoft" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2"/></filter>
+    <filter id="lDrop" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.6" flood-color="#7A5B3A" flood-opacity=".3"/>
+    </filter>
+  </defs>
+
+  <!-- 墙面 + 窗侧暖光 + 顶部暗角 -->
+  <rect x="0" y="0" width="390" height="168" fill="url(#lWall)"/>
+  <rect x="0" y="0" width="390" height="168" fill="url(#lSun)"/>
+  <rect x="0" y="0" width="390" height="168" fill="url(#lVign)"/>
+  <!-- 极淡墙纸竖纹 -->
+  <g stroke="#FFFFFF" stroke-width="1" opacity=".22">
+    <path d="M24 0v126M48 0v126M72 0v126M120 0v126M144 0v126M168 0v126M216 0v126M240 0v126M264 0v126"/>
+  </g>
+
+  <!-- 立体墙裙：分格 + 每格内凹阴影与高光 -->
+  <rect x="0" y="126" width="390" height="42" fill="url(#lPanel)"/>
+  <g fill="none" stroke="#DCC3A2" stroke-width="1.4" opacity=".85">
+    <path d="M0 126h390M0 168h390M60 128v40M150 128v40M240 128v40M330 128v40"/>
+  </g>
+  <g fill="none" stroke="#FFFFFF" stroke-width="1.2" opacity=".8">
+    <path d="M0 127.6h390M62 128v40M152 128v40M242 128v40M332 128v40"/>
+  </g>
+  <rect x="0" y="124" width="390" height="3" fill="#FFFFFF" opacity=".7"/>
+  <rect x="0" y="128" width="390" height="2" fill="#C9AC86" opacity=".55"/>
+
+  <!-- 木地板：透视拼缝 + 木纹 + 光泽带 + 墙脚阴影 -->
+  <rect x="0" y="168" width="390" height="80" fill="url(#lFloor)"/>
+  <g fill="none" stroke="#B18B5F" stroke-width="1.3" opacity=".6">
+    <path d="M0 196h390M0 224h390"/>
+    <path d="M48 168v28M132 168v28M216 168v28M300 168v28M368 168v28"/>
+    <path d="M90 196v28M174 196v28M258 196v28M342 196v28"/>
+    <path d="M48 224v24M132 224v24M216 224v24M300 224v24"/>
+  </g>
+  <g fill="none" stroke="#FFFFFF" stroke-width="1" opacity=".3">
+    <path d="M0 197.6h390M0 225.6h390M18 180h60M102 208h64M230 186h58M310 232h48"/>
+  </g>
+  <rect x="0" y="168" width="390" height="15" fill="url(#lFloorShadow)"/>
+  <path d="M276 168h114v80H206z" fill="#FFF2C8" opacity=".26" filter="url(#lBlur)"/>
+  <rect x="0" y="161" width="390" height="10" fill="url(#lBase)"/>
+  <rect x="0" y="161" width="390" height="2" fill="#FFF1D8" opacity=".85"/>
+  <rect x="0" y="169" width="390" height="2" fill="#8E683E" opacity=".5"/>
+
+  <!-- 大窗：厚框 + 暖阳 + 云 + 远山 + 树 + 窗台 -->
+  <g filter="url(#lDrop)">
+    <rect x="270" y="20" width="96" height="80" rx="8" fill="#FDF7EC" stroke="#D6B891" stroke-width="2"/>
+    <rect x="277" y="27" width="82" height="66" rx="4" fill="url(#lSky)"/>
+    <circle cx="338" cy="43" r="16" fill="url(#lGlow)"/>
+    <circle cx="338" cy="43" r="8" fill="#FFE9A8"/>
+    <g fill="#FFFFFF" opacity=".88" filter="url(#lSoft)">
+      <ellipse cx="297" cy="40" rx="12" ry="4.5"/><ellipse cx="324" cy="60" rx="14" ry="4"/>
+    </g>
+    <path d="M277 74q18-16 34-4t28-9 20 7v25H277z" fill="#A9D3B4" opacity=".9"/>
+    <path d="M277 83q16-9 30-2t34-4 18 3v13H277z" fill="#89BE9C" opacity=".95"/>
+    <path d="M292 93v-10" stroke="#6E9E7F" stroke-width="1.6"/>
+    <circle cx="292" cy="80" r="6" fill="#8AC0A0" opacity=".9"/>
+    <circle cx="287" cy="84" r="4.5" fill="#9CCDAE" opacity=".9"/>
+    <circle cx="297" cy="84" r="4.5" fill="#7FB597" opacity=".9"/>
+    <path d="M318 22v71M277 60h82" stroke="#FFFFFF" stroke-width="4.5"/>
+    <path d="M318 22v71M277 60h82" stroke="#E8D6BC" stroke-width="1" opacity=".9"/>
+    <path d="M279 29h18l-30 38v-30z" fill="#FFFFFF" opacity=".18"/>
+    <rect x="271" y="21" width="94" height="2" rx="1" fill="#FFFFFF" opacity=".95"/>
+  </g>
+  <path d="M266 100h104l-4 8h-96z" fill="#F7E9D2" stroke="#D6B891" stroke-width="1"/>
+  <rect x="266" y="100" width="104" height="2" fill="#FFFFFF" opacity=".9"/>
+  <!-- 窗台小物：书与杯子 -->
+  <g filter="url(#lDrop)">
+    <rect x="278" y="94" width="20" height="6" rx="1" fill="#C98C7C"/>
+    <rect x="280" y="92" width="16" height="3" rx="1" fill="#F1D9C0"/>
+    <path d="M344 94h12l-1 6h-10z" fill="#F7FBF6" stroke="#C9D8CE" stroke-width=".8"/>
+    <path d="M356 95q4 0 3 4t-3 0" fill="none" stroke="#C9D8CE" stroke-width="1.2"/>
+  </g>
+
+  <!-- 双侧窗帘：褶皱渐变 + 绑带 -->
+  <g>
+    <path d="M264 16q12 46 3 92l22 2q-8-48 3-94z" fill="url(#lCurtain)" stroke="#DDA181" stroke-width="1"/>
+    <g fill="none" stroke="#FFFFFF" stroke-width="1.2" opacity=".45">
+      <path d="M269 18q9 44 2 88M276 18q6 44 1 88M283 18q3 44 1 88"/>
+    </g>
+    <path d="M370 16q-12 46-3 92l-22 2q8-48-3-94z" fill="url(#lCurtain)" stroke="#DDA181" stroke-width="1"/>
+    <g fill="none" stroke="#FFFFFF" stroke-width="1.2" opacity=".45">
+      <path d="M365 18q-9 44-2 88M358 18q-6 44-1 88M351 18q-3 44-1 88"/>
+    </g>
+    <rect x="263" y="14" width="112" height="5" rx="2.5" fill="#D9B38D"/>
+    <rect x="263" y="14" width="112" height="1.6" rx="1" fill="#FBEBD2" opacity=".9"/>
+  </g>
+
+  <!-- 挂画：立体双框 + 画中风景 + 玻璃反光 -->
+  <g filter="url(#lDrop)">
+    <rect x="32" y="26" width="66" height="56" rx="4" fill="url(#lFrame)" stroke="#A87C4F" stroke-width="1.2"/>
+    <rect x="36" y="30" width="58" height="48" rx="2" fill="#FFFFFF"/>
+    <rect x="39" y="33" width="52" height="42" rx="1" fill="#F9E2CE"/>
+    <circle cx="55" cy="47" r="7" fill="#F6B26C"/>
+    <path d="M39 63q12-14 24-5t28-9v26H39z" fill="#9CC9A0"/>
+    <path d="M39 70q14-7 26-1t26-4v10H39z" fill="#7FB58D" opacity=".9"/>
+    <path d="M39 33h14l-14 20z" fill="#FFFFFF" opacity=".22"/>
+    <rect x="33" y="27" width="64" height="2" rx="1" fill="#FFF3DA" opacity=".9"/>
+  </g>
+
+  <!-- 壁灯：暖光晕 + 立体灯罩 -->
+  <ellipse cx="191" cy="52" rx="34" ry="26" fill="url(#lGlow)" filter="url(#lBlur)"/>
+  <g filter="url(#lDrop)">
+    <rect x="187" y="22" width="8" height="15" rx="2" fill="#C8A173"/>
+    <path d="M175 37h32l-6 18h-20z" fill="#FFE3A8" stroke="#DCB071" stroke-width="1.4"/>
+    <path d="M178 39h26l-1 4h-24z" fill="#FFF4D6" opacity=".9"/>
+    <ellipse cx="191" cy="55" rx="12" ry="3" fill="#FFD98C" opacity=".8"/>
+  </g>
+
+  <!-- 左下角前景绿植，制造景深 -->
+  <g opacity=".72" filter="url(#lDrop)">
+    <ellipse cx="12" cy="222" rx="6" ry="17" transform="rotate(-30 12 222)" fill="#7FB493"/>
+    <ellipse cx="26" cy="218" rx="6" ry="19" transform="rotate(16 26 218)" fill="#9AC9A6"/>
+    <ellipse cx="38" cy="226" rx="5" ry="14" transform="rotate(34 38 226)" fill="#79AE8D"/>
+    <path d="M6 232h38l-4 16H10z" fill="#D9A97E" stroke="#B4855C" stroke-width="1"/>
+    <path d="M8 233h34" stroke="#F5D6B2" stroke-width="1.4" opacity=".9"/>
+  </g>
+</svg>

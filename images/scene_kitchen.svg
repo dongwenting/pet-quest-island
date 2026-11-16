@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 248" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="kWall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#EAF7F1"/><stop offset=".52" stop-color="#DCF0E7"/><stop offset="1" stop-color="#C8E3D7"/>
+    </linearGradient>
+    <linearGradient id="kTile" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity=".66"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="kTiles" width="64" height="68" patternUnits="userSpaceOnUse">
+      <rect width="64" height="68" fill="url(#kTile)"/>
+      <g fill="none" stroke="#A6D0BE" stroke-width="1.15" opacity=".8">
+        <path d="M0 0h64M0 34h64M0 68h64M0 0v34M32 0v34M64 0v34M16 34v34M48 34v34"/>
+      </g>
+      <g fill="none" stroke="#FFFFFF" stroke-width="1.1" opacity=".8">
+        <path d="M0 1.8h64M0 35.8h64M1.8 0v34M33.8 0v34M17.8 34v34M49.8 34v34"/>
+      </g>
+    </pattern>
+    <radialGradient id="kSun" cx="84%" cy="12%" r="76%">
+      <stop offset="0" stop-color="#FFF7D8" stop-opacity=".72"/>
+      <stop offset=".42" stop-color="#FFF7D8" stop-opacity=".17"/>
+      <stop offset="1" stop-color="#FFF7D8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="kVign" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5F9280" stop-opacity=".15"/>
+      <stop offset=".18" stop-color="#5F9280" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="kFloor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E2EEE8"/><stop offset=".45" stop-color="#D2E3DA"/><stop offset="1" stop-color="#BDD3C8"/>
+    </linearGradient>
+    <linearGradient id="kFloorShadow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6F9A87" stop-opacity=".3"/><stop offset="1" stop-color="#6F9A87" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="kBase" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F3FBF6"/><stop offset=".45" stop-color="#CBE3D6"/><stop offset="1" stop-color="#A9C9B8"/>
+    </linearGradient>
+    <linearGradient id="kWood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F7D9A9"/><stop offset=".45" stop-color="#E6B87D"/><stop offset="1" stop-color="#C68B52"/>
+    </linearGradient>
+    <linearGradient id="kDoor" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FCE7C2"/><stop offset=".55" stop-color="#EFC894"/><stop offset="1" stop-color="#DCA66E"/>
+    </linearGradient>
+    <linearGradient id="kMetal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F6FCF9"/><stop offset=".38" stop-color="#C9DCD3"/><stop offset="1" stop-color="#8EACA0"/>
+    </linearGradient>
+    <linearGradient id="kSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#BCE7F6"/><stop offset=".58" stop-color="#DDF3F7"/><stop offset="1" stop-color="#F6F6DC"/>
+    </linearGradient>
+    <filter id="kBlur" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="6"/></filter>
+    <filter id="kSoft" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2"/></filter>
+    <filter id="kDrop" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.6" flood-color="#4E7A66" flood-opacity=".3"/>
+    </filter>
+  </defs>
+
+  <!-- 墙面：底色 + 错缝瓷砖 + 窗侧暖光 + 顶部暗角 -->
+  <rect x="0" y="0" width="390" height="168" fill="url(#kWall)"/>
+  <rect x="0" y="0" width="390" height="162" fill="url(#kTiles)"/>
+  <rect x="0" y="0" width="390" height="168" fill="url(#kSun)"/>
+  <rect x="0" y="0" width="390" height="168" fill="url(#kVign)"/>
+  <!-- 瓷砖腰线：细窄双层，避免横切画面 -->
+  <rect x="0" y="120" width="390" height="4" fill="#F6FCF8" opacity=".5"/>
+  <rect x="0" y="120" width="390" height="1.2" fill="#FFFFFF" opacity=".9"/>
+  <rect x="0" y="124" width="390" height="1.2" fill="#A6CBB9" opacity=".5"/>
+
+  <!-- 地面：渐变 + 透视砖缝 + 墙脚阴影 + 窗口斜光 -->
+  <rect x="0" y="168" width="390" height="80" fill="url(#kFloor)"/>
+  <g fill="none" stroke="#A9C7B9" stroke-width="1.3" opacity=".65">
+    <path d="M0 196h390M0 224h390"/>
+    <path d="M52 168v28M156 168v28M260 168v28M364 168v28"/>
+    <path d="M104 196v28M208 196v28M312 196v28"/>
+    <path d="M52 224v24M156 224v24M260 224v24M364 224v24"/>
+  </g>
+  <g fill="none" stroke="#FFFFFF" stroke-width="1" opacity=".55">
+    <path d="M0 197.7h390M0 225.7h390"/>
+  </g>
+  <rect x="0" y="168" width="390" height="15" fill="url(#kFloorShadow)"/>
+  <path d="M292 168h98v80H222z" fill="#FFF8DA" opacity=".2" filter="url(#kBlur)"/>
+  <!-- 立体踢脚线 -->
+  <rect x="0" y="161" width="390" height="10" fill="url(#kBase)"/>
+  <rect x="0" y="161" width="390" height="2" fill="#FFFFFF" opacity=".8"/>
+  <rect x="0" y="169" width="390" height="2" fill="#93B8A5" opacity=".55"/>
+
+  <!-- 吊柜：投影 + 立体柜体 + 内凹门板 + 金属把手 -->
+  <g filter="url(#kDrop)">
+    <rect x="16" y="14" width="134" height="56" rx="5" fill="url(#kWood)" stroke="#A97642" stroke-width="1.4"/>
+    <rect x="19" y="17" width="128" height="4" rx="2" fill="#FFF1D2" opacity=".75"/>
+    <rect x="19" y="64" width="128" height="4" rx="2" fill="#8F6037" opacity=".4"/>
+    <rect x="21" y="20" width="61" height="46" rx="4" fill="url(#kDoor)" stroke="#B98650" stroke-width="1.1"/>
+    <rect x="84" y="20" width="61" height="46" rx="4" fill="url(#kDoor)" stroke="#B98650" stroke-width="1.1"/>
+    <rect x="24" y="23" width="55" height="40" rx="3" fill="none" stroke="#FFFFFF" stroke-width="1" opacity=".55"/>
+    <rect x="87" y="23" width="55" height="40" rx="3" fill="none" stroke="#FFFFFF" stroke-width="1" opacity=".55"/>
+    <rect x="70" y="40" width="6" height="15" rx="3" fill="url(#kMetal)" stroke="#7E9A8C" stroke-width=".7"/>
+    <rect x="87" y="40" width="6" height="15" rx="3" fill="url(#kMetal)" stroke="#7E9A8C" stroke-width=".7"/>
+    <circle cx="73" cy="43" r="1.2" fill="#FFFFFF"/>
+    <circle cx="90" cy="43" r="1.2" fill="#FFFFFF"/>
+  </g>
+  <!-- 柜顶小绿植 -->
+  <g>
+    <ellipse cx="124" cy="5" rx="3" ry="7" transform="rotate(-26 124 5)" fill="#8CC79B"/>
+    <ellipse cx="133" cy="4" rx="3" ry="8" transform="rotate(20 133 4)" fill="#A8D9AE"/>
+    <ellipse cx="128" cy="8" rx="2.6" ry="6" fill="#76B989"/>
+    <path d="M121 11h14l-2 4h-10z" fill="#DFA97F" stroke="#BE865F" stroke-width=".8"/>
+    <path d="M122 11h12" stroke="#F6D6B4" stroke-width="1" opacity=".8"/>
+  </g>
+
+  <!-- 挂杆与金属厨具 -->
+  <g>
+    <rect x="172" y="25" width="98" height="4" rx="2" fill="url(#kMetal)" stroke="#8FA99C" stroke-width=".7"/>
+    <circle cx="173" cy="27" r="3" fill="#D2E4DC" stroke="#8FA99C" stroke-width=".8"/>
+    <circle cx="269" cy="27" r="3" fill="#D2E4DC" stroke="#8FA99C" stroke-width=".8"/>
+    <g fill="none" stroke="#9DB8AC" stroke-width="2"><path d="M184 29v10M212 29v11M242 29v10"/></g>
+    <g filter="url(#kDrop)">
+      <path d="M175 40h18l-2 17q-7 5-14 0z" fill="url(#kMetal)" stroke="#7E9C8E" stroke-width="1"/>
+      <ellipse cx="184" cy="40" rx="9" ry="3" fill="#EAF6F0" stroke="#7E9C8E" stroke-width=".9"/>
+      <path d="M177 44v10" stroke="#FFFFFF" stroke-width="1.6" opacity=".75"/>
+      <path d="M204 41h16l-2 17h-12z" fill="url(#kMetal)" stroke="#7E9C8E" stroke-width="1"/>
+      <path d="M204 41h16" stroke="#F4FBF7" stroke-width="1.4"/>
+      <path d="M206 45v10" stroke="#FFFFFF" stroke-width="1.4" opacity=".7"/>
+      <path d="M232 40q10-11 20 0l-3 18h-14z" fill="url(#kMetal)" stroke="#7E9C8E" stroke-width="1"/>
+      <path d="M233 41q9-9 18 0" stroke="#FFFFFF" stroke-width="1.3" fill="none" opacity=".8"/>
+      <path d="M236 47q6 5 12 0" stroke="#8EACA0" stroke-width="1" fill="none" opacity=".7"/>
+    </g>
+  </g>
+
+  <!-- 窗：厚窗框 + 天空云层 + 双层远山 + 窗台盆栽 + 玻璃反光 -->
+  <g filter="url(#kDrop)">
+    <rect x="294" y="18" width="80" height="80" rx="8" fill="#F6FBF8" stroke="#A7CCB9" stroke-width="2"/>
+    <rect x="298" y="22" width="72" height="72" rx="5" fill="url(#kSky)"/>
+    <g fill="#FFFFFF" opacity=".9" filter="url(#kSoft)">
+      <ellipse cx="315" cy="38" rx="12" ry="4.5"/><ellipse cx="350" cy="33" rx="10" ry="4"/>
+    </g>
+    <path d="M298 70q14-13 26-4t24-8 22 6v30H298z" fill="#A9D9C5" opacity=".9"/>
+    <path d="M298 80q16-10 30-2t42-5v21H298z" fill="#8BC5AB" opacity=".95"/>
+    <path d="M298 88q20-6 34 0t38-3v9H298z" fill="#79B79C" opacity=".55"/>
+    <path d="M334 22v72M298 58h72" stroke="#FFFFFF" stroke-width="4.5"/>
+    <path d="M334 22v72M298 58h72" stroke="#DCEFE6" stroke-width="1" opacity=".9"/>
+    <path d="M300 24h18l-30 38v-30z" fill="#FFFFFF" opacity=".17"/>
+    <path d="M340 24h28v10l-28 34z" fill="#FFFFFF" opacity=".09"/>
+    <rect x="295" y="19" width="78" height="2" rx="1" fill="#FFFFFF" opacity=".95"/>
+    <rect x="295" y="94" width="78" height="2" rx="1" fill="#A7CCB9" opacity=".7"/>
+  </g>
+  <path d="M290 98h88l-4 7h-80z" fill="#EDF8F1" stroke="#AFD2C0" stroke-width="1"/>
+  <rect x="290" y="98" width="88" height="2" fill="#FFFFFF" opacity=".95"/>
+  <g>
+    <path d="M307 98q-5-9-1-13 5 4 2 12M313 98q3-11 9-13-1 8-8 13" fill="#8FC79E" stroke="#6CAB7E" stroke-width=".8"/>
+    <path d="M304 98h13l-2-7h-9z" fill="#E2B48D" stroke="#C08F68" stroke-width=".8"/>
+    <path d="M305 92h11" stroke="#F8DCC0" stroke-width="1"/>
+  </g>
+
+  <!-- 立体挂钟 -->
+  <g filter="url(#kDrop)">
+    <circle cx="276" cy="122" r="17" fill="#F1FAF5" stroke="#A6C9B7" stroke-width="2"/>
+    <circle cx="276" cy="122" r="13" fill="#FFFFFF" stroke="#D8ECE2" stroke-width="1"/>
+    <g stroke="#9DBBAD" stroke-width="1.2"><path d="M276 111v2M276 131v2M265 122h2M285 122h2"/></g>
+    <path d="M276 122v-8M276 122h7" stroke="#5E8A76" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+    <circle cx="276" cy="122" r="1.8" fill="#5E8A76"/>
+    <path d="M267 115a12 12 0 0 1 9-4" stroke="#FFFFFF" stroke-width="1.6" fill="none" opacity=".9"/>
+  </g>
+
+</svg>

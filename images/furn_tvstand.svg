@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 180">
+  <defs>
+    <linearGradient id="tvWood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F1C48D"/><stop offset="1" stop-color="#C2824A"/>
+    </linearGradient>
+    <linearGradient id="tvScreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8FD3E8"/><stop offset="1" stop-color="#4B8FB8"/>
+    </linearGradient>
+  </defs>
+  <!-- 电视柜 -->
+  <g>
+    <rect x="10" y="112" width="190" height="56" rx="7" fill="url(#tvWood)" stroke="#9B6533" stroke-width="3"/>
+    <rect x="18" y="120" width="80" height="40" rx="4" fill="#F9DFB8" stroke="#B4834B" stroke-width="2.5"/>
+    <rect x="112" y="120" width="80" height="40" rx="4" fill="#F9DFB8" stroke="#B4834B" stroke-width="2.5"/>
+    <g stroke="#8A5B2D" stroke-width="3" stroke-linecap="round"><path d="M90 140h8M112 140h8"/></g>
+    <rect x="18" y="168" width="14" height="10" rx="3" fill="#8B5B2D"/>
+    <rect x="178" y="168" width="14" height="10" rx="3" fill="#8B5B2D"/>
+  </g>
+  <!-- 柜面上的小音箱（实心大块，不做镂空） -->
+  <rect x="18" y="96" width="24" height="18" rx="4" fill="#7C6A5E" stroke="#584A40" stroke-width="2"/>
+  <rect x="168" y="96" width="24" height="18" rx="4" fill="#7C6A5E" stroke="#584A40" stroke-width="2"/>
+  <!-- 电视底座与机身 -->
+  <rect x="92" y="98" width="26" height="16" rx="3" fill="#5A6469"/>
+  <rect x="52" y="8" width="106" height="90" rx="9" fill="#4B565C" stroke="#333D42" stroke-width="3"/>
+  <rect x="60" y="16" width="90" height="70" rx="4" fill="url(#tvScreen)" stroke="#2E6E8F" stroke-width="2"/>
+  <!-- 屏幕里的暖色画面 -->
+  <circle cx="128" cy="34" r="10" fill="#FFE6A8"/>
+  <path d="M60 70q22-24 44-10t46-14v40H60z" fill="#8FC49B" opacity=".9"/>
+  <path d="M60 60q18-14 34-6t28-8" stroke="#FFFFFF" stroke-width="3" fill="none" opacity=".5"/>
+</svg>

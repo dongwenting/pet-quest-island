@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 160">
+  <defs>
+    <linearGradient id="bdWood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F2A057"/><stop offset="1" stop-color="#BE5719"/>
+    </linearGradient>
+    <linearGradient id="bdRed" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FF708D"/><stop offset="1" stop-color="#D6113C"/>
+    </linearGradient>
+    <linearGradient id="bdSheet" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#EFE6DC"/>
+    </linearGradient>
+  </defs>
+  <!-- 透视说明：远端（上边）窄且贴墙，近端（下边）宽，床从后墙向房间铺开 -->
+  <!-- 床脚 -->
+  <g fill="#8B441A"><rect x="24" y="148" width="18" height="10" rx="4"/><rect x="198" y="148" width="18" height="10" rx="4"/></g>
+  <!-- 床头板：靠墙的远端，圆弧实木 -->
+  <path d="M44 66C44 28 66 10 120 10s76 18 76 56z" fill="url(#bdWood)" stroke="#9C4514" stroke-width="3"/>
+  <path d="M56 62C56 34 74 20 120 20s64 14 64 42z" fill="#F7BC78" stroke="#B4662A" stroke-width="2"/>
+  <g stroke="#D98B40" stroke-width="1.6" fill="none" opacity=".7" stroke-linecap="round">
+    <path d="M70 56C70 36 84 26 108 24"/><path d="M82 58C82 40 92 32 110 30"/>
+    <path d="M140 26c18 4 28 14 28 32"/><path d="M152 30c10 6 16 14 16 28"/>
+  </g>
+  <!-- 床头两根球柱 -->
+  <g fill="#F5A745" stroke="#A95616" stroke-width="2.5">
+    <circle cx="46" cy="16" r="11"/><circle cx="194" cy="16" r="11"/>
+  </g>
+  <!-- 床垫：上窄下宽的实心梯形 -->
+  <path d="M48 58h144l30 82H18z" fill="url(#bdSheet)" stroke="#C9B8A8" stroke-width="2.5"/>
+  <!-- 两只白枕头 -->
+  <g fill="#FFFFFF" stroke="#D9D2CC" stroke-width="2">
+    <ellipse cx="88" cy="62" rx="30" ry="11"/>
+    <ellipse cx="152" cy="62" rx="30" ry="11"/>
+  </g>
+  <!-- 红被：覆盖床身中前段，同样是透视梯形 -->
+  <path d="M38 84h164l20 50H18z" fill="url(#bdRed)" stroke="#AE0E32" stroke-width="2.5"/>
+  <path d="M40 88h160l5 12H35z" fill="#FF92A7" opacity=".75"/>
+  <path d="M36 86h168" stroke="#FFC2CE" stroke-width="3" opacity=".85" stroke-linecap="round"/>
+  <path d="M26 116q94 12 188 0" stroke="#C7103A" stroke-width="2.5" fill="none" opacity=".6"/>
+  <!-- 床尾实木板 -->
+  <path d="M18 132h204v16H18z" fill="url(#bdWood)" stroke="#9C4514" stroke-width="3"/>
+  <path d="M30 134h180v6H30z" fill="#F8C88F" opacity=".6"/>
+  <rect x="18" y="146" width="204" height="6" rx="3" fill="#A9541E"/>
+  <!-- 左右床框斜边 -->
+  <g stroke="#B4662A" stroke-width="5" fill="none" stroke-linecap="round">
+    <path d="M46 60L18 132M194 60l28 72"/>
+  </g>
+</svg>

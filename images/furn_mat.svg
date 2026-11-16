@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 82">
+  <defs>
+    <linearGradient id="mtBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#BFE3D5"/><stop offset="1" stop-color="#8FC7B4"/>
+    </linearGradient>
+  </defs>
+  <!-- 厚实地垫：实心圆角矩形 + 内框 -->
+  <rect x="4" y="8" width="252" height="66" rx="16" fill="#6FAE99" opacity=".45"/>
+  <rect x="4" y="4" width="252" height="66" rx="16" fill="url(#mtBody)" stroke="#5FA089" stroke-width="3"/>
+  <rect x="16" y="14" width="228" height="46" rx="10" fill="#E9F7F1" stroke="#A9D8C7" stroke-width="2.5"/>
+  <!-- 格纹 -->
+  <g stroke="#A6D4C2" stroke-width="2.5" opacity=".8">
+    <path d="M58 14v46M100 14v46M142 14v46M184 14v46M226 14v46"/>
+    <path d="M16 37h228"/>
+  </g>
+  <!-- 中央小图案 -->
+  <g fill="#7FC4AC">
+    <circle cx="130" cy="37" r="11"/>
+    <path d="M130 20q-14 4-8 16M130 20q14 4 8 16" stroke="#5FA089" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </g>
+  <g fill="#FFFFFF" opacity=".7">
+    <circle cx="130" cy="34" r="4"/>
+  </g>
+</svg>

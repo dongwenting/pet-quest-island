@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 180">
+  <defs>
+    <linearGradient id="nsWood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F4C992"/><stop offset="1" stop-color="#C68A4F"/>
+    </linearGradient>
+    <linearGradient id="nsShade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFE9B6"/><stop offset="1" stop-color="#F2B85F"/>
+    </linearGradient>
+  </defs>
+  <!-- 台灯 -->
+  <g>
+    <ellipse cx="88" cy="66" rx="34" ry="9" fill="#E7A94F" opacity=".35"/>
+    <path d="M60 30h56l-9 32H69z" fill="url(#nsShade)" stroke="#D69A3F" stroke-width="2.5"/>
+    <ellipse cx="88" cy="30" rx="28" ry="6" fill="#FFF0C8" stroke="#D69A3F" stroke-width="2"/>
+    <rect x="85" y="62" width="6" height="24" rx="3" fill="#A8A29A"/>
+    <ellipse cx="88" cy="88" rx="20" ry="6" fill="#8D867C" stroke="#6B655D" stroke-width="2"/>
+    <circle cx="88" cy="48" r="9" fill="#FFF6D6" opacity=".7"/>
+  </g>
+  <!-- 柜体 -->
+  <g>
+    <rect x="12" y="86" width="116" height="82" rx="7" fill="url(#nsWood)" stroke="#9B6533" stroke-width="3"/>
+    <rect x="18" y="94" width="104" height="30" rx="4" fill="#FBE2BC" stroke="#B4834B" stroke-width="2.5"/>
+    <rect x="18" y="128" width="104" height="32" rx="4" fill="#FBE2BC" stroke="#B4834B" stroke-width="2.5"/>
+    <g fill="#9A6A3A" stroke="#7D5028" stroke-width="2">
+      <circle cx="70" cy="109" r="5"/><circle cx="70" cy="144" r="5"/>
+    </g>
+    <rect x="20" y="168" width="13" height="10" rx="3" fill="#8B5B2D"/>
+    <rect x="107" y="168" width="13" height="10" rx="3" fill="#8B5B2D"/>
+  </g>
+  <!-- 台面 -->
+  <rect x="6" y="80" width="128" height="12" rx="4" fill="#F9E6C6" stroke="#C9A373" stroke-width="2.5"/>
+</svg>

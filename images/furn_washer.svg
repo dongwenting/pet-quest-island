@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 170">
+  <defs>
+    <linearGradient id="wsBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#DCE7E3"/>
+    </linearGradient>
+    <radialGradient id="wsGlass" cx=".38" cy=".32" r=".75">
+      <stop offset="0" stop-color="#8FC6DE"/><stop offset=".6" stop-color="#3E7FA6"/><stop offset="1" stop-color="#224F70"/>
+    </radialGradient>
+  </defs>
+  <g fill="#90A39C"><rect x="16" y="156" width="16" height="12" rx="4"/><rect x="128" y="156" width="16" height="12" rx="4"/></g>
+  <rect x="8" y="8" width="144" height="150" rx="13" fill="url(#wsBody)" stroke="#9CB2AA" stroke-width="3"/>
+  <!-- 顶盖与操作面板 -->
+  <rect x="8" y="8" width="144" height="34" rx="12" fill="#EAF2EF" stroke="#9CB2AA" stroke-width="2.5"/>
+  <rect x="20" y="18" width="42" height="14" rx="4" fill="#FFFFFF" stroke="#AFC2BA" stroke-width="2"/>
+  <circle cx="108" cy="25" r="10" fill="#7CC0A5" stroke="#4E9A7E" stroke-width="2.5"/>
+  <circle cx="108" cy="25" r="3" fill="#FFFFFF"/>
+  <circle cx="132" cy="25" r="5" fill="#F5B85C" stroke="#D6953C" stroke-width="2"/>
+  <!-- 滚筒门 -->
+  <circle cx="80" cy="100" r="52" fill="#C9DAD4" stroke="#8FA79E" stroke-width="3"/>
+  <circle cx="80" cy="100" r="43" fill="url(#wsGlass)" stroke="#6E97A6" stroke-width="3"/>
+  <path d="M52 76q14-16 30-10" stroke="#DDF3FF" stroke-width="6" stroke-linecap="round" opacity=".7" fill="none"/>
+  <path d="M96 124q14-8 18-22" stroke="#BFE6F5" stroke-width="4" stroke-linecap="round" opacity=".45" fill="none"/>
+  <!-- 门框高光 -->
+  <circle cx="80" cy="100" r="50" fill="none" stroke="#FFFFFF" stroke-width="3" opacity=".75"/>
+</svg>

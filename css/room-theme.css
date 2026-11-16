@@ -1,0 +1,287 @@
+/* ==========================================================================
+   房间氛围：昼夜 / 季节主题 + 窗帘轻摆 · 光斑缓移 · 星光闪烁
+   --------------------------------------------------------------------------
+   依赖 #petStage 上的 data-tod / data-season / data-scene（由 js/roomtheme.js 写入）
+   分层：.pa-back 在背景 SVG 之上、家具与宠物之下；.pa-front 是极淡前景帘影。
+   所有层 pointer-events:none，动画只改 transform / opacity，不触发重排。
+   ========================================================================== */
+
+/* ---------- 1. 主题变量：默认「午后」 ---------- */
+.pet-stage{
+  --pa-tint:linear-gradient(180deg,rgba(255,236,190,.16) 0%,rgba(255,250,225,.02) 100%);
+  --pa-tint-a:.85;
+  --pa-season-tint:linear-gradient(120deg,rgba(255,190,140,.30),rgba(255,222,170,.20));
+  --pa-season-a:.14;
+  --pa-sky:linear-gradient(180deg,rgba(150,205,245,.14),rgba(255,255,255,.02));
+  --pa-sky-a:.85;
+  --pa-glow:rgba(255,226,158,.62);
+  --pa-glow-a:1;
+  --pa-beam:rgba(255,246,214,.28);
+  --pa-beam-a:.62;
+  --pa-star-a:0;
+  --pa-star-color:#FFF6D0;
+  --pa-mote-a:.7;
+  --pa-mote-color:rgba(255,246,212,.95);
+  --pa-mote-radius:50%;
+  --pa-curtain-a:.34;
+  --pa-curtain-color:rgba(255,232,206,.85);
+  /* 各房间窗户 / 窗帘几何，按 SVG viewBox 390×248 换算为百分比 */
+  --pa-win-x:69.2%; --pa-win-y:8.1%; --pa-win-w:24.6%; --pa-win-h:32.3%;
+  --pa-cur-l:67.4%; --pa-cur-r:88.3%; --pa-cur-w:7%; --pa-cur-h:38%;
+  --pa-glow-cx:82%; --pa-glow-cy:16%;
+}
+.pet-stage.scene-bedroom{
+  --pa-win-x:65.1%; --pa-win-y:6.5%; --pa-win-w:28.7%; --pa-win-h:39.5%;
+  --pa-cur-l:61.8%; --pa-cur-r:88.9%; --pa-cur-w:8%; --pa-cur-h:48%;
+  --pa-glow-cx:80%; --pa-glow-cy:18%;
+}
+.pet-stage.scene-kitchen{
+  --pa-win-x:75.4%; --pa-win-y:7.3%; --pa-win-w:20.5%; --pa-win-h:32.3%;
+  --pa-glow-cx:84%; --pa-glow-cy:14%;
+}
+
+/* ---------- 2. 时段：清晨 / 午后 / 黄昏 / 夜晚 ---------- */
+.pet-stage[data-tod="dawn"]{
+  --pa-tint:linear-gradient(180deg,rgba(255,178,150,.24) 0%,rgba(255,226,196,.12) 48%,rgba(170,205,230,.12) 100%);
+  --pa-tint-a:.95;
+  --pa-sky:linear-gradient(180deg,rgba(255,166,138,.42),rgba(255,228,180,.20));
+  --pa-glow:rgba(255,198,150,.68);
+  --pa-beam:rgba(255,226,190,.22); --pa-beam-a:.46;
+  --pa-star-a:.12;
+  --pa-mote-a:.55; --pa-mote-color:rgba(255,236,220,.9);
+  --pa-curtain-color:rgba(255,222,214,.85);
+}
+.pet-stage[data-tod="noon"]{
+  --pa-tint:linear-gradient(180deg,rgba(255,236,190,.16) 0%,rgba(255,250,225,.02) 100%);
+  --pa-tint-a:.85;
+  --pa-sky:linear-gradient(180deg,rgba(150,205,245,.16),rgba(255,255,255,.02));
+  --pa-glow:rgba(255,226,158,.66);
+  --pa-beam:rgba(255,246,214,.30); --pa-beam-a:.66;
+  --pa-star-a:0;
+  --pa-mote-a:.58;
+}
+.pet-stage[data-tod="dusk"]{
+  --pa-tint:linear-gradient(180deg,rgba(255,148,108,.22) 0%,rgba(186,124,158,.18) 55%,rgba(96,92,146,.20) 100%);
+  --pa-tint-a:.95;
+  --pa-sky:linear-gradient(180deg,rgba(255,132,96,.46),rgba(146,104,160,.34));
+  --pa-glow:rgba(255,168,120,.62);
+  --pa-beam:rgba(255,196,150,.24); --pa-beam-a:.5;
+  --pa-star-a:.3;
+  --pa-mote-a:.55; --pa-mote-color:rgba(255,214,186,.9);
+  --pa-curtain-color:rgba(255,206,196,.8);
+}
+.pet-stage[data-tod="night"]{
+  --pa-tint:linear-gradient(180deg,rgba(28,40,88,.46) 0%,rgba(20,28,66,.58) 100%);
+  --pa-tint-a:1;
+  --pa-sky:linear-gradient(180deg,rgba(18,28,72,.50),rgba(30,36,86,.30));
+  --pa-glow:rgba(150,190,255,.44); --pa-glow-a:.8;
+  --pa-beam:rgba(170,200,255,.12); --pa-beam-a:.34;
+  --pa-star-a:1; --pa-star-color:#EAF2FF;
+  --pa-mote-a:.4; --pa-mote-color:rgba(220,235,255,.8);
+  --pa-curtain-color:rgba(196,206,246,.72);
+}
+
+/* ---------- 3. 季节：影响整体色温与飘落物 ---------- */
+.pet-stage[data-season="spring"]{
+  --pa-season-tint:linear-gradient(120deg,rgba(255,178,202,.42),rgba(176,228,184,.30));
+  --pa-season-a:.22;
+  --pa-mote-color:rgba(248,158,190,.95); --pa-mote-radius:60% 0 60% 0;
+}
+.pet-stage[data-season="summer"]{
+  --pa-season-tint:linear-gradient(120deg,rgba(108,208,198,.34),rgba(255,238,162,.26));
+  --pa-season-a:.19;
+  --pa-mote-color:rgba(255,238,168,.95); --pa-mote-radius:50%;
+}
+.pet-stage[data-season="autumn"]{
+  --pa-season-tint:linear-gradient(120deg,rgba(255,172,100,.38),rgba(208,130,80,.26));
+  --pa-season-a:.23;
+  --pa-mote-color:rgba(240,158,86,.95); --pa-mote-radius:60% 0 60% 0;
+}
+.pet-stage[data-season="winter"]{
+  --pa-season-tint:linear-gradient(120deg,rgba(176,212,255,.40),rgba(226,238,255,.30));
+  --pa-season-a:.21;
+  --pa-mote-color:rgba(255,255,255,.98); --pa-mote-radius:50%;
+}
+/* 白雪落在浅色房间里容易隐形，加一圈极淡冷蓝描边 */
+.pet-stage[data-season="winter"] .pa-motes i{box-shadow:0 0 0 1px rgba(142,178,216,.42)}
+
+/* ---------- 4. 房间 × 时段的专属氛围 ---------- */
+/* 厨房清晨：灶台刚亮，晨光更暖更集中 */
+.pet-stage.scene-kitchen[data-tod="dawn"]{--pa-glow:rgba(255,214,150,.80);--pa-beam-a:.64}
+/* 客厅午后：金色斜阳最长 */
+.pet-stage.scene-living[data-tod="noon"]{--pa-glow:rgba(255,222,140,.76);--pa-beam-a:.92}
+/* 卧室夜晚：星空最亮、室内最沉 */
+.pet-stage.scene-bedroom[data-tod="night"]{--pa-star-a:1;--pa-star-color:#FFF3CE;--pa-glow:rgba(168,196,255,.52)}
+
+/* ---------- 5. 叠层骨架 ---------- */
+.pa{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.pa-back{z-index:0}                 /* 家具 .ps-room 同为 0 但 DOM 在后 → 家具压在氛围之上 */
+.pa-front{z-index:3}                /* 与 .ps-tap / .ps-stage-tag 同级，DOM 在其前 → 按钮仍在最上 */
+.pa>*{position:absolute;pointer-events:none}
+
+/* 全屏时段色调 / 季节色温 */
+.pa-tint{inset:0;background:var(--pa-tint);opacity:var(--pa-tint-a);
+  transition:background .9s ease,opacity .9s ease}
+.pa-season{inset:0;background:var(--pa-season-tint);opacity:var(--pa-season-a);
+  transition:background .9s ease}
+
+/* 窗外天空：只覆盖窗框内的玻璃区域 */
+.pa-sky{left:var(--pa-win-x);top:var(--pa-win-y);width:var(--pa-win-w);height:var(--pa-win-h);
+  border-radius:4px;background:var(--pa-sky);opacity:var(--pa-sky-a);
+  box-shadow:inset 0 0 12px rgba(255,255,255,.16);transition:background .9s ease}
+
+/* 卧室 SVG 画的是夜空：白天用「日间天空 + 单个太阳 + 扁云 + 远山」盖住月亮，
+   夜晚把这一层淡出，露出 SVG 原本的月亮与星空。太阳圆心对准 SVG 月亮 (332,45)。 */
+.pa-daylight{
+  --pd-sky1:rgba(166,208,244,.95); --pd-sky2:rgba(224,240,250,.90);
+  --pd-sun:rgba(255,250,214,.98); --pd-glow:rgba(255,232,164,.72);
+  --pd-hill:rgba(120,164,168,.55);
+  left:var(--pa-win-x);top:var(--pa-win-y);width:var(--pa-win-w);height:var(--pa-win-h);
+  border-radius:4px;opacity:0;transition:opacity 1s ease;
+  background:
+    radial-gradient(ellipse 26% 6% at 22% 36%,rgba(255,255,255,.82) 0%,transparent 100%),
+    radial-gradient(ellipse 20% 5% at 56% 24%,rgba(255,255,255,.62) 0%,transparent 100%),
+    radial-gradient(ellipse 74% 20% at 16% 110%,var(--pd-hill) 0%,transparent 100%),
+    radial-gradient(ellipse 84% 24% at 82% 114%,var(--pd-hill) 0%,transparent 100%),
+    linear-gradient(180deg,var(--pd-sky1) 0%,var(--pd-sky2) 100%)}
+.pa-daylight:after{content:'';position:absolute;left:69.6%;top:29.6%;width:34%;height:34%;
+  transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(circle,var(--pd-sun) 0 26%,var(--pd-glow) 42%,transparent 72%)}
+.pet-stage.scene-bedroom[data-tod="noon"] .pa-daylight{opacity:1}
+.pet-stage.scene-bedroom[data-tod="dawn"] .pa-daylight{opacity:1;
+  --pd-sky1:rgba(255,188,166,.95);--pd-sky2:rgba(255,232,210,.90);
+  --pd-sun:rgba(255,250,222,.98);--pd-glow:rgba(255,196,148,.72);
+  --pd-hill:rgba(176,146,158,.50)}
+.pet-stage.scene-bedroom[data-tod="dusk"] .pa-daylight{opacity:1;
+  --pd-sky1:rgba(224,148,140,.95);--pd-sky2:rgba(255,212,176,.90);
+  --pd-sun:rgba(255,240,196,.98);--pd-glow:rgba(255,158,108,.70);
+  --pd-hill:rgba(140,116,150,.52)}
+
+/* 地面光斑：比光带更容易看出「缓移」 */
+.pa-spot{left:30%;bottom:4%;width:46%;height:38%;border-radius:50%;
+  background:radial-gradient(ellipse,var(--pa-beam) 0%,rgba(0,0,0,0) 70%);
+  opacity:calc(var(--pa-beam-a) * .55);filter:blur(10px);
+  animation:paSpot 19s ease-in-out infinite}
+
+/* 窗方向的大光晕：缓慢呼吸 */
+.pa-glow{inset:0;
+  background:radial-gradient(ellipse at var(--pa-glow-cx) var(--pa-glow-cy),var(--pa-glow) 0%,rgba(0,0,0,0) 58%);
+  opacity:var(--pa-glow-a);animation:paBreathe 9s ease-in-out infinite}
+
+/* 斜射光斑：两条不同步的缓移光带 */
+.pa-beam{left:-12%;top:-32%;width:124%;height:164%;
+  background:linear-gradient(102deg,rgba(0,0,0,0) 38%,var(--pa-beam) 52%,rgba(0,0,0,0) 66%);
+  opacity:var(--pa-beam-a);filter:blur(5px);
+  animation:paDrift 22s ease-in-out infinite}
+.pa-beam-2{width:70%;left:6%;animation-duration:37s;animation-delay:-13s;
+  opacity:calc(var(--pa-beam-a) * .55);filter:blur(12px)}
+
+/* 星光：夜里在窗区与屋内少量闪烁 */
+.pa-stars{inset:0;opacity:var(--pa-star-a);transition:opacity 1s ease}
+.pa-stars i{position:absolute;width:var(--sz,3px);height:var(--sz,3px);border-radius:50%;
+  background:var(--pa-star-color);box-shadow:0 0 5px 1px var(--pa-star-color);
+  animation:paTwinkle var(--dur,3.2s) ease-in-out var(--delay,0s) infinite alternate}
+.pa-stars i:nth-child(4n+1):before,
+.pa-stars i:nth-child(4n+1):after{content:'';position:absolute;left:50%;top:50%;
+  background:var(--pa-star-color);border-radius:2px;transform:translate(-50%,-50%);opacity:.7}
+.pa-stars i:nth-child(4n+1):before{width:1px;height:calc(var(--sz,3px) * 3)}
+.pa-stars i:nth-child(4n+1):after{width:calc(var(--sz,3px) * 3);height:1px}
+
+/* 浮尘 / 花瓣 / 雪：按季节换形状与颜色 */
+.pa-motes{inset:0;opacity:var(--pa-mote-a)}
+.pa-motes i{position:absolute;top:100%;width:var(--sz,6px);height:var(--sz,6px);
+  background:var(--pa-mote-color);border-radius:var(--pa-mote-radius);filter:blur(.3px);
+  animation:paFloat var(--dur,13s) linear var(--delay,0s) infinite}
+.pet-stage[data-season="autumn"] .pa-motes i,
+.pet-stage[data-season="winter"] .pa-motes i{animation-name:paFall}
+
+/* 前景帘影：轻摆，opacity 很低，不遮挡中间的角色 */
+.pa-curtain{top:5%;height:var(--pa-cur-h);width:var(--pa-cur-w);
+  background:linear-gradient(90deg,rgba(0,0,0,0) 0%,var(--pa-curtain-color) 22%,
+    rgba(255,255,255,.18) 42%,var(--pa-curtain-color) 70%,rgba(0,0,0,0) 100%);
+  opacity:var(--pa-curtain-a);transform-origin:50% 0;
+  border-radius:0 0 45% 45% / 0 0 9% 9%;
+  animation:paSway 6.5s ease-in-out infinite alternate}
+.pa-curtain-l{left:var(--pa-cur-l)}
+.pa-curtain-r{left:var(--pa-cur-r);animation-delay:-3.2s}
+.pet-stage.scene-kitchen .pa-curtain{display:none}
+
+/* 厨房没有窗帘，改用灶台蒸汽 */
+.pa-steam{inset:0;display:none}
+.pet-stage.scene-kitchen .pa-steam{display:block}
+.pa-steam i{left:var(--sx);bottom:44%;width:13px;height:42px;
+  background:linear-gradient(0deg,rgba(255,255,255,0),rgba(255,255,255,.6));
+  filter:blur(5px);border-radius:50%;opacity:0;
+  animation:paSteam 6s ease-in-out var(--sd,0s) infinite}
+
+/* 极淡前景体积光，让光斑「扫过」角色而不盖住它 */
+.pa-frontlight{inset:-10%;
+  background:linear-gradient(108deg,rgba(0,0,0,0) 40%,var(--pa-beam) 58%,rgba(0,0,0,0) 76%);
+  opacity:calc(var(--pa-beam-a) * .16);filter:blur(14px);
+  animation:paDrift 32s ease-in-out -8s infinite}
+
+/* ---------- 6. 动效 ---------- */
+@keyframes paBreathe{
+  0%,100%{opacity:calc(var(--pa-glow-a) * .7)}
+  50%{opacity:var(--pa-glow-a)}
+}
+@keyframes paDrift{
+  0%,100%{transform:translate3d(-14%,0,0);opacity:calc(var(--pa-beam-a) * .55)}
+  50%{transform:translate3d(16%,3%,0);opacity:var(--pa-beam-a)}
+}
+@keyframes paSpot{
+  0%,100%{transform:translate3d(-16%,0,0) scale(1);opacity:calc(var(--pa-beam-a) * .28)}
+  50%{transform:translate3d(22%,-8%,0) scale(1.2);opacity:calc(var(--pa-beam-a) * .72)}
+}
+@keyframes paTwinkle{
+  0%{opacity:.32;transform:scale(.72)}
+  100%{opacity:1;transform:scale(1.3)}
+}
+@keyframes paFloat{
+  0%{transform:translate3d(0,0,0) rotate(0deg);opacity:0}
+  14%{opacity:.9}
+  84%{opacity:.75}
+  100%{transform:translate3d(var(--drift,30px),-300px,0) rotate(220deg);opacity:0}
+}
+@keyframes paFall{
+  0%{transform:translate3d(0,-300px,0) rotate(0deg);opacity:0}
+  14%{opacity:.9}
+  84%{opacity:.75}
+  100%{transform:translate3d(var(--drift,30px),0,0) rotate(200deg);opacity:0}
+}
+@keyframes paSway{
+  0%{transform:translateX(-2px) skewX(-7deg) scaleX(1.03) scaleY(1)}
+  100%{transform:translateX(2px) skewX(7deg) scaleX(.93) scaleY(.982)}
+}
+@keyframes paSteam{
+  0%{transform:translateY(8px) scaleX(.8);opacity:0}
+  28%{opacity:.48}
+  100%{transform:translateY(-54px) scaleX(1.45);opacity:0}
+}
+
+/* 页面隐藏时暂停动画；系统开启「减少动态效果」时静态呈现 */
+.pet-stage.pa-paused .pa *{animation-play-state:paused!important}
+@media(prefers-reduced-motion:reduce){
+  .pa *{animation:none!important;transition:none!important}
+  .pa-motes,.pa-steam{display:none!important}
+}
+
+/* ---------- 7. 氛围切换控件 ---------- */
+.theme-bar{display:flex;align-items:center;gap:8px;padding:0 0 8px;text-align:left}
+.tb-now{flex:1;min-width:0;font-size:11.5px;font-weight:800;color:var(--green-d);
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tb-toggle{flex:none;padding:4px 10px;border:1.5px solid #d9e7d5;border-radius:99px;
+  background:#fff;color:var(--green-d);font-size:11px;font-weight:800;
+  box-shadow:0 2px 0 #e4eee0;transition:transform .12s}
+.tb-toggle:active{transform:translateY(2px);box-shadow:none}
+.theme-panel{margin:0 0 10px;padding:10px 12px;border-radius:12px;
+  background:#f7fbf4;border:1.5px solid #dcecd4}
+.theme-panel[hidden]{display:none}
+.tp-row{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px}
+.tp-label{flex:none;width:30px;padding-top:4px;font-size:11px;font-weight:800;color:var(--muted)}
+.tp-chips{display:flex;flex:1;flex-wrap:wrap;gap:5px;min-width:0}
+.tp-chip{padding:4px 9px;border:1.5px solid var(--line);border-radius:99px;background:#fff;
+  font-size:11px;font-weight:800;color:var(--muted);white-space:nowrap;transition:background .15s,border-color .15s}
+.tp-chip.on{background:#eafbe4;border-color:var(--green);color:#3f8a20}
+.tp-chip:active{transform:translateY(1px)}
+.tp-hint{margin:2px 0 0;font-size:10.5px;line-height:1.5;color:var(--muted)}
